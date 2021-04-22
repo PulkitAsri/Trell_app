@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#3F51B5">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATION TAB"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATION TAB"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATION TAB"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATION TAB"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATION TAB"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOTIFICATION TAB"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+
+
+
+    <view class="androidx.appcompat.app.AlertController$RecycleListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </view>
+</LinearLayout>

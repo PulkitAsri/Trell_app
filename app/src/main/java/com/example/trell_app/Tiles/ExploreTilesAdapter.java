@@ -6,7 +6,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesAdapter.ViewHolder> {
+
+    List<String> ThumbnailUrls;
+
+
 
     @NonNull
     @Override
