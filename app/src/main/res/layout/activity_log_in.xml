@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LogInActivity">
     <EditText
-        android:id="@+id/signupUsernameEditText"
+        android:id="@+id/loginUsernameEditText"
         android:layout_width="279dp"
         android:layout_height="43dp"
         android:layout_marginTop="260dp"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/signupPasswordEditText"
+        android:id="@+id/loginPasswordEditText"
         android:layout_width="271dp"
         android:layout_height="39dp"
         android:layout_marginBottom="316dp"
