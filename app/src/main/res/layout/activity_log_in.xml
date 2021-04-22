@@ -10,19 +10,19 @@
     tools:context=".LogInActivity">
 
     <EditText
-        android:id="@+id/signupUsernameEditText"
         android:layout_width="271dp"
         android:layout_height="39dp"
         android:layout_marginTop="416dp"
         android:hint="E-mail"
         android:textColor="#FFFFFF"
         android:textColorHint="#C3BBBB"
+        android:id="@+id/loginUsernameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/signupPasswordEditText"
+        android:id="@+id/loginPasswordEditText"
         android:layout_width="271dp"
         android:layout_height="39dp"
         android:layout_marginBottom="196dp"
