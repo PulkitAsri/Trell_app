@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "301565720099",
+    "project_id": "trellapp",
+    "storage_bucket": "trellapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301565720099:android:55f32a61acc60b8de86396",
+        "android_client_info": {
+          "package_name": "com.example.trell_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301565720099-7ff81euhvkra6cbvb8pmkm81j1dsik8v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trell_app",
+            "certificate_hash": "97850ce1003ad9c9a451597f24eab458514ab551"
+          }
+        },
+        {
+          "client_id": "301565720099-ghg3mel2pcou54g6mje7ja5uh8kbsg2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBEX6-1HrWlw-b9S4FTqSSDK2dYGbJzS_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301565720099-ghg3mel2pcou54g6mje7ja5uh8kbsg2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
