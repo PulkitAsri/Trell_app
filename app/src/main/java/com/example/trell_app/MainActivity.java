@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         mAuth=FirebaseAuth.getInstance();
 
         if(mAuth.getCurrentUser()!=null){
