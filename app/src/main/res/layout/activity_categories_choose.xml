@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoriesChooseActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/food"
+                android:layout_width="193dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="food"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/recipies"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="recipies"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/reviews"
+                android:layout_width="162dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="reviews"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/fashion"
+                android:layout_width="203dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="fashion"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/fitness"
+                android:layout_width="201dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="fitness"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/travel"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="travel"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/beauty"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="beauty"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/personal_care"
+                android:layout_width="210dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="personal care"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/gadgets"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="gadgets"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/sports"
+                android:layout_width="201dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="sports"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/challenges"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="challenges"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/motivating"
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="motivating"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/family"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="family"
+                app:cornerRadius="10dp" />
+
+
+            <Button
+                android:id="@+id/music"
+                android:layout_width="104dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="music"
+                app:cornerRadius="10dp" />
+
+            <Button
+                android:id="@+id/tech"
+                android:layout_width="117dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="tech"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/continueToHome"
+        android:layout_width="123dp"
+        android:layout_height="60dp"
+        android:text="Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></Button>
+</androidx.constraintlayout.widget.ConstraintLayout>
