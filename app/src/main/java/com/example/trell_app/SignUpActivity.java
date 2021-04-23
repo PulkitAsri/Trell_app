@@ -20,8 +20,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -123,7 +127,15 @@ public class SignUpActivity extends AppCompatActivity {
                         //add to data base
 
                         String userId = mAuth.getCurrentUser().getUid();
+                        DatabaseReference currentUserDb= FirebaseDatabase.getInstance().getReference().child("users").child(userId);
 
+                        Map userInfo=new HashMap<>();
+                        userInfo.put( "email",email);
+                        userInfo.put( "firstname",firstname);
+                        userInfo.put( "lastname",lastname);
+                        userInfo.put( "profileImageUrl", "default");
+
+                        currentUserDb.updateChildren(userInfo);
 
                     }
                 }
