@@ -137,7 +137,7 @@
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
-    
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="64dp"
