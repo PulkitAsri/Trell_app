@@ -116,6 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
         String password=mPassword.getText().toString();
         String confirmpassword= mConfirmPassword.getText().toString();
         String username=mUsername.getText().toString();
+        String dob=dateTXT.getText().toString();
 
         if(!firstname.equals("") && !lastname.equals("") && !password.equals("") && !username.equals("") && password.equals(confirmpassword)) {
             Log.i("herhehhehe", email + "/" + password);
@@ -136,6 +137,7 @@ public class SignUpActivity extends AppCompatActivity {
                         userInfo.put( "firstname",firstname);
                         userInfo.put( "lastname",lastname);
                         userInfo.put( "profileImageUrl", "default");
+                        userInfo.put( "dob",dob);
 
                         currentUserDb.updateChildren(userInfo);
 
