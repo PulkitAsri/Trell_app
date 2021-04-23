@@ -146,11 +146,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView13" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView3"
         android:layout_width="64dp"
         android:layout_height="50dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="115dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
@@ -160,11 +160,11 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView4"
         android:layout_width="64dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
@@ -174,7 +174,7 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView5"
         android:layout_width="64dp"
         android:layout_height="50dp"
@@ -187,11 +187,11 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView6"
         android:layout_width="64dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
@@ -200,20 +200,21 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView7"
         android:layout_width="64dp"
         android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="42dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:layout_constraintVertical_bias="0.23000002"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView8"
         android:layout_width="64dp"
         android:layout_height="50dp"
@@ -226,7 +227,7 @@
         app:layout_constraintVertical_bias="0.19"
         app:srcCompat="@drawable/elonmusk__2_" />
 
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView9"
         android:layout_width="64dp"
         android:layout_height="50dp"
