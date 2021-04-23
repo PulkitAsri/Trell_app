@@ -121,6 +121,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         if(!firstname.equals("") && !lastname.equals("") && !password.equals("") && !username.equals("") && password.equals(confirmpassword)) {
             Log.i("herhehhehe", email + "/" + password);
+
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
