@@ -38,7 +38,8 @@
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="Log In" />
+            android:text="Log In"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 </RelativeLayout>

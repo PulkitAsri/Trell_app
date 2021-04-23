@@ -28,29 +28,30 @@
 <!--        tools:layout_editor_absoluteY="305dp" />-->
 
     <EditText
+        android:id="@+id/loginUsernameEditText"
         android:layout_width="271dp"
         android:layout_height="39dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="420dp"
         android:hint="E-mail"
         android:textColor="#FFFFFF"
         android:textColorHint="#C3BBBB"
-        android:id="@+id/loginUsernameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/loginPasswordEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095" />
 
     <EditText
         android:id="@+id/loginPasswordEditText"
         android:layout_width="271dp"
         android:layout_height="39dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="192dp"
         android:hint="Password"
         android:textColorHighlight="#F4F0F0"
         android:textColorHint="#BAB4B4"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupUsernameEditText" />
+        app:layout_constraintEnd_toEndOf="@+id/loginUsernameEditText"
+        app:layout_constraintStart_toStartOf="@+id/loginUsernameEditText" />
 
     <Button
         android:id="@+id/loginButton"
