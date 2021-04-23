@@ -10,23 +10,23 @@
 
     <TextView
         android:id="@+id/profileName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_width="139dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="108dp"
         android:text="Elon Musk"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/profileAnalytics"
+        android:id="@+id/logoutButton"
         android:layout_width="98dp"
         android:layout_height="39dp"
-        android:text="Analytics"
+        android:text="Logout"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#FFFFFF"
         android:textSize="15sp"
@@ -36,16 +36,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileSideBar" />
 
+    <Button
+        android:id="@+id/profileAnalytics"
+        android:layout_width="98dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+        android:text="Analytics"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:cornerRadius="7dp"
+        app:layout_constraintStart_toStartOf="@+id/profileUserName"
+        app:layout_constraintTop_toBottomOf="@+id/profileUserName" />
+
     <TextView
         android:id="@+id/profileUserName"
-        android:layout_width="87dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="139dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="4dp"
         android:text="\@elon_musk"
         android:textColor="#D5BFBF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/profileName"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="@+id/profileName"
         app:layout_constraintTop_toBottomOf="@+id/profileName" />
 
@@ -54,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="69"
+        android:text="0"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFFFFF"
@@ -71,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="69M"
+        android:text="0"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFFFFF"
@@ -88,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="69"
+        android:text="0"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#FFFFFF"

@@ -10,18 +10,26 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.example.trell_app.MainActivity;
 import com.example.trell_app.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
@@ -43,6 +51,10 @@ public class ProfileFragment extends Fragment {
     ImageButton chooseProfilePicButton;
     CircularImageView circularImageView;
     public FirebaseAuth mAuth;
+    DatabaseReference profileRef;
+    TextView mName,mPostCount,mFollowers,mFollowing,mUsername;
+    Button mLogout;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +62,34 @@ public class ProfileFragment extends Fragment {
 
         chooseProfilePicButton=view.findViewById(R.id.profilePictureButton);
         circularImageView=view.findViewById(R.id.profilePicture);
+        mName=view.findViewById(R.id.profileName);
+        mUsername=view.findViewById(R.id.profileUserName);
+        mLogout=view.findViewById(R.id.logoutButton);
+
         mAuth=FirebaseAuth.getInstance();
+        profileRef=FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(mAuth.getCurrentUser().getUid());
+
+        profileRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String link =snapshot.child("profileImageUrl").getValue(String.class);
+                Glide.with(getContext()).load(link).dontAnimate().into(circularImageView);
+
+                String name=snapshot.child("firstname").getValue(String.class)+" "+snapshot.child("lastname").getValue(String.class);
+                String username=snapshot.child("username").getValue(String.class);
+
+                mName.setText(name);
+                mUsername.setText(username);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
         chooseProfilePicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +98,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
         return view;
     }
 
@@ -82,7 +127,6 @@ public class ProfileFragment extends Fragment {
         }
 
     }
-
     private void saveDataToDatabase(String profileImageUrl ) {
 
         Task<Void> ref= FirebaseDatabase.getInstance().getReference().child("users")
@@ -95,45 +139,48 @@ public class ProfileFragment extends Fragment {
                         Log.i("SUCCESS","profilePicUploaded");
                     }
                 });
-
         }
 
     private void uploadToFirebaseStorage() {
         if(selectedImage==null) return;
 
-
-
         String filename = UUID.randomUUID().toString();
 
         StorageReference ref = FirebaseStorage.getInstance().getReference()
                 .child("profilePictures").child(filename);
+
+//            Picasso.get().load(selectedImage).into(circularImageView);
         try {
+
             Bitmap bitmap =MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImage);
-        
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
+            byte[] data = stream.toByteArray();
+            StorageTask<UploadTask.TaskSnapshot> uploadTask = ref.putBytes(data)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    saveDataToDatabase(uri.toString()) ;
+                                }
+                            });
 
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
-        byte[] data = stream.toByteArray();
-        StorageTask<UploadTask.TaskSnapshot> uploadTask = ref.putBytes(data)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
-                        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                saveDataToDatabase(uri.toString()) ;
-                            }
-                        });
-
-                    }
-                });
+                        }
+                    });
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
+    }
+    public void logout(){
+        FirebaseAuth.getInstance().signOut();
+        Log.i("logout "," here");
+        Intent intent =new Intent(getContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
 }
