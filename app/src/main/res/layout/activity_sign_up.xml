@@ -85,6 +85,7 @@
         android:layout_width="158dp"
         android:layout_height="40dp"
         android:layout_marginStart="40dp"
+        android:layout_marginEnd="22dp"
         android:layout_marginBottom="20dp"
         android:hint="First Name"
         android:textSize="16sp"
@@ -96,15 +97,12 @@
         android:id="@+id/signupLastnameEditText"
         android:layout_width="164dp"
         android:layout_height="40dp"
-        android:layout_marginStart="30dp"
         android:layout_marginEnd="27dp"
         android:layout_marginBottom="20dp"
         android:hint="Last Name"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/signupEmailEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
-        app:layout_constraintStart_toEndOf="@+id/signupFirstnameEditText"
         app:layout_constraintTop_toTopOf="@+id/signupFirstnameEditText" />
 
     <EditText
@@ -131,43 +129,41 @@
         app:layout_constraintStart_toStartOf="@+id/signupEmailEditText"
         app:layout_constraintTop_toBottomOf="@+id/signupEmailEditText" />
 
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="344dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
         android:hint="Note : Username must be unique."
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/signupPasswordEditText"
         app:layout_constraintEnd_toEndOf="@+id/signupUsernameEditText"
-        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/signupUsernameEditText"
         app:layout_constraintTop_toBottomOf="@+id/signupUsernameEditText" />
-
 
     <EditText
         android:id="@+id/signupPasswordEditText"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="328dp"
+        android:layout_marginTop="44dp"
         android:hint="Create Password"
         android:inputType="textVisiblePassword"
         android:password="true"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.582"
-        app:layout_constraintStart_toStartOf="@+id/textView4" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/signupUsernameEditText" />
 
     <EditText
         android:id="@+id/signupConfirmPasswordEditText"
         android:layout_width="344dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:hint="Confirm Password"
         android:inputType="textVisiblePassword"
         android:password="true"
         app:layout_constraintEnd_toEndOf="@+id/signupPasswordEditText"
-        app:layout_constraintHorizontal_bias="0.582"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/signupPasswordEditText"
         app:layout_constraintTop_toBottomOf="@+id/signupPasswordEditText" />
 
@@ -190,12 +186,12 @@
         android:layout_height="41dp"
         android:layout_toRightOf="@id/date"
         android:src="@drawable/calender_icon"
-        app:layout_constraintBottom_toTopOf="@+id/signupButton"
+        app:layout_constraintBottom_toBottomOf="@+id/date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/date"
-        app:layout_constraintTop_toBottomOf="@+id/signupConfirmPasswordEditText"
-        app:layout_constraintVertical_bias="0.422" />
+        app:layout_constraintTop_toTopOf="@+id/date"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/signupButton"
@@ -218,13 +214,12 @@
         app:flow_verticalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/signupButton"
         app:layout_constraintStart_toStartOf="@+id/signupConfirmPasswordEditText"
-        app:layout_constraintTop_toBottomOf="@+id/signupConfirmPasswordEditText"
-        app:layout_constraintVertical_bias="0.41" />
+        app:layout_constraintTop_toBottomOf="@+id/signupConfirmPasswordEditText" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="136dp"
-        android:layout_height="48dp"
+        android:layout_width="175dp"
+        android:layout_height="42dp"
         android:text="Sign Up"
         android:textAlignment="center"
         android:textSize="30sp"
