@@ -32,7 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     EditText dateTXT;
     ImageView cal;
     private Button mSignUpButton;
-    EditText mFirstName, mLastName, mEmail, mPassword, mConfirmPassword;
+    EditText mFirstName, mLastName, mEmail, mUsername, mPassword, mConfirmPassword;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListner;
     private int mDate, mMonth, mYear;
@@ -48,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         cal = findViewById(R.id.datepicker);
         mFirstName=findViewById(R.id.signupFirstnameEditText);
         mLastName=findViewById(R.id.signupLastnameEditText);
+        mUsername=findViewById(R.id.signupUsernameEditText);
         mPassword=findViewById(R.id.signupPasswordEditText);
         mConfirmPassword= findViewById(R.id.signupConfirmPasswordEditText);
 
@@ -114,8 +115,9 @@ public class SignUpActivity extends AppCompatActivity {
         String lastname=mLastName.getText().toString();
         String password=mPassword.getText().toString();
         String confirmpassword= mConfirmPassword.getText().toString();
+        String username=mUsername.getText().toString();
 
-        if(!firstname.equals("") && !lastname.equals("") && !password.equals("") && password.equals(confirmpassword)) {
+        if(!firstname.equals("") && !lastname.equals("") && !password.equals("") && !username.equals("") && password.equals(confirmpassword)) {
             Log.i("herhehhehe", email + "/" + password);
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
