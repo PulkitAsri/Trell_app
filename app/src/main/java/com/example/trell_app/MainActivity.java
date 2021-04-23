@@ -14,9 +14,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     public static Boolean started=false;
-    private FirebaseAuth mAuth;
+
     Button goToSignUpButton;
     Button goToLogInButton;
+    FirebaseAuth mAuth;
 
 
     @Override

@@ -1,6 +1,8 @@
 package com.example.trell_app;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
 //import android.os.Bundle;
@@ -18,12 +20,13 @@ public class CategoriesChooseActivity extends AppCompatActivity {
     private Button submitButton;
 
     private boolean[] categories;
-
+    final int[] selected = {0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         categories = new boolean[15];
 
@@ -31,10 +34,11 @@ public class CategoriesChooseActivity extends AppCompatActivity {
             categories[i] = false;
         }
 
-        mfood = findViewById(R.id.foodButton);
+        mfood = findViewById(R.id.food);
         mfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[0] = !categories[0];
+                toggleButton(mfood, 0);
             }
         });
 
@@ -42,6 +46,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mrecipies.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[1] = !categories[1];
+                toggleButton(mrecipies, 1);
             }
         });
 
@@ -49,6 +54,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mreviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[2] = !categories[2];
+                toggleButton(mreviews, 2);
             }
         });
 
@@ -56,6 +62,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mfashion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[3] = !categories[3];
+                toggleButton(mfashion, 3);
             }
         });
 
@@ -63,6 +70,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mfitness.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[4] = !categories[4];
+                toggleButton(mfitness, 4);
             }
         });
 
@@ -70,6 +78,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mtravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[5] = !categories[5];
+                toggleButton(mtravel, 5);
             }
         });
 
@@ -77,6 +86,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mbeauty.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[6] = !categories[6];
+                toggleButton(mbeauty, 6);
             }
         });
 
@@ -84,6 +94,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mpersonalcare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[7] = !categories[7];
+                toggleButton(mpersonalcare, 7);
             }
         });
 
@@ -91,6 +102,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mgadgets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[8] = !categories[8];
+                toggleButton(mgadgets, 8);
             }
         });
 
@@ -98,6 +110,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         msports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[9] = !categories[9];
+                toggleButton(msports, 9);
             }
         });
 
@@ -105,6 +118,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mchallenges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[10] = !categories[10];
+                 toggleButton(mchallenges, 10);
             }
         });
 
@@ -112,6 +126,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mmotivating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[11] = !categories[11];
+                toggleButton(mmotivating, 11);
             }
         });
 
@@ -119,6 +134,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mfamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[12] = !categories[12];
+                 toggleButton(mfamily, 12);
             }
         });
 
@@ -126,6 +142,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mmusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[13] = !categories[13];
+                toggleButton(mmusic, 13);
             }
         });
 
@@ -133,51 +150,51 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         mtech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[14] = !categories[14];
+                toggleButton(mtech, 14);
             }
         });
-
+        submitButton = findViewById(R.id.continueToHome);
+        submitButton.setEnabled(false);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                submitButtonClick();
+                if(selected[0] < 3){
+                    //toast
+                    Toast.makeText(CategoriesChooseActivity.this, "Choose Atleast three categories", Toast.LENGTH_SHORT).show();
+                }else{
+                    //sign up completed redirect to app
+                    Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }
 
-    public void toggleButton(boolean categoryX){
-        if(categoryX){
-            categoryX = false;
+    public void toggleButton(Button CategoryX,int idx){
+        categories[idx] = !categories[idx];
+        if(categories[idx]){
+            CategoryX.setBackgroundColor(CategoryX.getResources().getColor(R.color.white));
+            CategoryX.setTextColor(CategoryX.getResources().getColor(R.color.black));
         }else{
-            categoryX = true;
+            CategoryX.setBackgroundColor(CategoryX.getResources().getColor(R.color.black));
+            CategoryX.setTextColor(CategoryX.getResources().getColor(R.color.white));
         }
+        if(categories[idx]){
+            selected[0]++;
+        }else{
+            selected[0]--;
+        }
+        submitButton.setEnabled(selected[0]>=3);
     }
 
 
 
-    public void submitButtonClick(){
-
-
-
-    }
+//    public void submitButtonClick(){
+//
+//
+//
+//    }
 
 }
-/*
-
-categories :
-    food
-    recipies
-    reviews = false;
-    fashion
-    fitness
-    travel
-    beauty
-    personl acre
-    gadhgets
-    sports
-    challenges
-    motivationg
-    faming
-    music
-    tech
-    family
- */

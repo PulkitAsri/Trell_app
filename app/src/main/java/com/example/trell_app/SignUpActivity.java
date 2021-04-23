@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.i("Auth Started","");
                 if(user!=null){
                     Log.i("Auth Starte in ","");
-                    Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent intent= new Intent(getApplicationContext(), CategoriesChooseActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();

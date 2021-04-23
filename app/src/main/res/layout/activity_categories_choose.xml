@@ -211,4 +211,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"></Button>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="194dp"
+        android:layout_height="83dp"
+        android:text="Categories"
+        android:textAlignment="center"
+        android:textSize="36sp"
+        app:flow_verticalAlign="center"
+        tools:layout_editor_absoluteX="108dp"
+        tools:layout_editor_absoluteY="50dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
