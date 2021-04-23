@@ -75,7 +75,8 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String link =snapshot.child("profileImageUrl").getValue(String.class);
-                Glide.with(getContext()).load(link).dontAnimate().into(circularImageView);
+                if(!link.equals("default"))
+                    Glide.with(getContext()).load(link).dontAnimate().into(circularImageView);
 
                 String name=snapshot.child("firstname").getValue(String.class)+" "+snapshot.child("lastname").getValue(String.class);
                 String username=snapshot.child("username").getValue(String.class);
