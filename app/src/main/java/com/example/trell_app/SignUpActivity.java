@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -136,10 +137,11 @@ public class SignUpActivity extends AppCompatActivity {
                         userInfo.put( "firstname",firstname);
                         userInfo.put( "lastname",lastname);
                         userInfo.put( "profileImageUrl", "default");
-
+                        userInfo.put( "username", username);
                         currentUserDb.updateChildren(userInfo);
 
                     }
+
                 }
             });
         }
@@ -148,6 +150,16 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please fill in all fields correctly.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    HashSet<String> userNamesSet=new HashSet<String>();
+    public boolean checkUniqueUserName(String userName){
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+        if(userNamesSet.contains(userName)){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     @Override
