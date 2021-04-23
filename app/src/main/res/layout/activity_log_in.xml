@@ -19,6 +19,14 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
 
+<!--    <com.facebook.login.widget.LoginButton-->
+<!--        android:id="@+id/login_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        tools:layout_editor_absoluteX="128dp"-->
+<!--        tools:layout_editor_absoluteY="305dp" />-->
+
     <EditText
         android:layout_width="271dp"
         android:layout_height="39dp"
