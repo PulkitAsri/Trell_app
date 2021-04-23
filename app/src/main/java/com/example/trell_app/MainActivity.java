@@ -29,11 +29,10 @@ public class MainActivity extends AppCompatActivity {
             finish();
 
         }else{
-            Intent intent= new Intent(this ,LogInActivity.class);
+            Intent intent= new Intent(this ,SignUpActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();
-
         }
 
 

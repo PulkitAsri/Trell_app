@@ -2,19 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="200dp"
+    android:layout_height="300dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="171dp"
+        android:layout_height="286dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -29,58 +27,57 @@
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
                 app:srcCompat="@drawable/doggy" />
 
             <TextView
                 android:id="@+id/thumbnailUserId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="28dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="15dp"
                 android:text="Sam Smith"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#FFFFFF"
-                android:textSize="26sp"
+                android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
-                android:id="@+id/thumbnailLike"
-                android:layout_width="51dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="180dp"
-                android:layout_marginBottom="20dp"
+                android:id="@+id/imageView"
+                android:layout_width="21dp"
+                android:layout_height="19dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="15dp"
                 android:adjustViewBounds="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/thumbnailUserId"
                 app:srcCompat="@drawable/white_heart" />
 
             <TextView
-                android:id="@+id/thumnailLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="24dp"
+                android:id="@+id/thumbnailLikes"
+                android:layout_width="53dp"
+                android:layout_height="19dp"
                 android:text="1800"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="#FFFFFF"
                 android:textColorHighlight="#FFFFFF"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.727"
-                app:layout_constraintStart_toEndOf="@+id/thumbnailLike" />
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
 
             <TextView
-                android:id="@+id/thumnailTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:id="@+id/thumbnailTitle"
+                android:layout_width="159dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginBottom="12dp"
                 android:text="Cute Doggy Plays Football"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -88,20 +85,22 @@
                 android:textColorHighlight="#FFFFFF"
                 android:textColorHint="#FFFFFF"
                 android:textColorLink="#FDFDFD"
-                android:textSize="30sp"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toTopOf="@+id/thumbnailUserId"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@+id/thumbnailPlay"
-                android:layout_width="151dp"
-                android:layout_height="96dp"
+                android:layout_width="92dp"
+                android:layout_height="42dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.498"
                 app:srcCompat="@android:drawable/ic_media_play" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

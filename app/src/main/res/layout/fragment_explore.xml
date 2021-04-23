@@ -12,38 +12,6 @@
         android:text="EXPLORE TAB"
         android:textAlignment="center"
         android:textSize="24dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EXPLORE TAB"
-        android:textAlignment="center"
-        android:textSize="24dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EXPLORE TAB"
-        android:textAlignment="center"
-        android:textSize="24dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EXPLORE TAB"
-        android:textAlignment="center"
-        android:textSize="24dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EXPLORE TAB"
-        android:textAlignment="center"
-        android:textSize="24dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="EXPLORE TAB"
-        android:textAlignment="center"
-        android:textSize="24dp"/>
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/exploreRecyclerView"
         android:layout_width="match_parent"
