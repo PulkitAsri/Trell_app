@@ -14,15 +14,17 @@
         class="androidx.appcompat.app.AlertController$RecycleListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="-197dp">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
     </view>
+
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="413dp"
         android:layout_height="78dp"
+        android:layout_marginTop="8dp"
         android:background="@color/purple_700"
         android:fontFamily="@font/alfa_slab_one"
         android:text="Notification Log"
@@ -30,13 +32,16 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="310dp"
-        android:layout_height="75dp"
+        android:layout_width="275dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/actor"
         android:text="\Elon Musk liked your video."
         android:textAlignment="textStart"
@@ -45,169 +50,192 @@
         app:flow_horizontalAlign="end"
         app:flow_verticalAlign="bottom"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="310dp"
-        android:layout_height="73dp"
+        android:layout_width="287dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/actor"
         android:text="Elon Musk reacted to your video! Check it out!"
         android:textAlignment="textStart"
         android:textColor="#D7F8F8F8"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView14"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView14" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="311dp"
-        android:layout_height="76dp"
+        android:layout_width="299dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/actor"
         android:text="Your order is ready to be shipped. Track your order here."
         android:textAlignment="textStart"
         android:textColor="#D7F8F8F8"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="342dp" />
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="310dp"
-        android:layout_height="79dp"
+        android:layout_width="302dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/actor"
         android:text="Your recent post has 224 likes. Promote for a  better reach!"
         android:textAlignment="textStart"
         android:textColor="#D7F8F8F8"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView16" />
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="312dp"
-        android:layout_height="79dp"
+        android:layout_width="310dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/actor"
         android:text="Elon Musk followed you. Check out his profile to follow him back!"
         android:textAlignment="textStart"
         android:textColor="#D7F8F8F8"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintBottom_toTopOf="@+id/textView17"
+        app:layout_constraintEnd_toStartOf="@+id/imageView8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView17" />
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="309dp"
-        android:layout_height="78dp"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/actor"
         android:text="Elon Musk liked your video."
         android:textAlignment="textStart"
         android:textColor="#D7F8F8F8"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageView9"
+        app:layout_constraintHorizontal_bias="0.441"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="309dp"
-        android:layout_height="75dp"
+        android:layout_width="315dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="28dp"
         android:fontFamily="@font/actor"
         android:text="You have gained 100+ new followers in the past 7 days. Check out analytics to know more!"
         android:textAlignment="textStart"
         android:textColor="#D7F8F8F8"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView13"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintEnd_toStartOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView13" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="64dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="63dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="74dp"
-        android:layout_height="76dp"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/imageView6"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="73dp"
-        android:layout_height="75dp"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView15"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/elonmusk__2_" />
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="73dp"
-        android:layout_height="75dp"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.949"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintStart_toEndOf="@+id/textView16"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.23000002"
         app:srcCompat="@drawable/elonmusk__2_" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="73dp"
-        android:layout_height="75dp"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView17"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/imageView9"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintVertical_bias="0.19"
         app:srcCompat="@drawable/elonmusk__2_" />
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="73dp"
-        android:layout_height="75dp"
+        android:layout_width="64dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toStartOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintVertical_bias="0.192"
         app:srcCompat="@drawable/elonmusk__2_" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
