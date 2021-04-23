@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         mAuth=FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser()==null){
+        if(mAuth.getCurrentUser()!=null){
             gotoHomeActivity();
         }
 
