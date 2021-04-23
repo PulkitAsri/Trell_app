@@ -48,13 +48,11 @@ public class MainActivity extends AppCompatActivity {
     }
     public void goToSignUp(){
         Intent intent= new Intent(this ,SignUpActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
     public void goToLogIn(){
         Intent intent= new Intent(this ,LogInActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
