@@ -60,7 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-                Log.i("Auth Starte","");
+                Log.i("Auth Started","");
                 if(user!=null){
                     Log.i("Auth Starte in ","");
                     Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
