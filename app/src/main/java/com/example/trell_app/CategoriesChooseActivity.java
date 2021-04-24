@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
 //import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CategoriesChooseActivity extends AppCompatActivity {
 
@@ -30,9 +32,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
 
         categories = new boolean[15];
 
-        for(int i = 0;i<categories.length;i++){
-            categories[i] = false;
-        }
+        Arrays.fill(categories, false);
 
         mfood = findViewById(R.id.food);
         mfood.setOnClickListener(new View.OnClickListener() {
@@ -153,21 +153,14 @@ public class CategoriesChooseActivity extends AppCompatActivity {
                 toggleButton(mtech, 14);
             }
         });
+
+
         submitButton = findViewById(R.id.continueToHome);
         submitButton.setEnabled(false);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selected[0] < 3){
-                    //toast
-                    Toast.makeText(CategoriesChooseActivity.this, "Choose Atleast three categories", Toast.LENGTH_SHORT).show();
-                }else{
-                    //sign up completed redirect to app
-                    Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                    finish();
-                }
+                submitButtonClick();
             }
         });
     }
@@ -190,11 +183,47 @@ public class CategoriesChooseActivity extends AppCompatActivity {
     }
 
 
+    public void submitButtonClick(){
+        if(selected[0] < 3){
+            //toast
+            Toast.makeText(CategoriesChooseActivity.this, "Choose Atleast Three Categories", Toast.LENGTH_SHORT).show();
+        }else{
+            //sign up completed redirect to app
 
-//    public void submitButtonClick(){
-//
-//
-//
-//    }
+
+
+
+            Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
+    }
+    public String getCategoryAt(int i){
+        switch(i){
+            case 0:return "food";
+            case 1:return "recipies";
+            case 2:return "reviews";
+            case 3:return "fashion";
+            case 4:return "fitness";
+            case 5:return "travel";
+            case 6:return "beauty";
+            case 7:return "personal_care";
+            case 8:return "gadgets";
+            case 9:return "sports";
+            case 10:return "challenges";
+            case 11:return "motivating";
+            case 12:return "family";
+            case 13:return "music";
+            case 14:return "tech";
+            default:
+                return null;
+//            case 15:return "food";
+//            case 16:return "food";
+//            case 17:return "food";
+
+        }
+    }
 
 }
+

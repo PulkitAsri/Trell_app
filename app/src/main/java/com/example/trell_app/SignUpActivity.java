@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,13 +22,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+
+import static androidx.camera.core.CameraX.getContext;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -120,7 +127,11 @@ public class SignUpActivity extends AppCompatActivity {
         String dob=dateTXT.getText().toString();
 
         if(!firstname.equals("") && !lastname.equals("") && !password.equals("") && !username.equals("") && password.equals(confirmpassword)) {
-            Log.i("herhehhehe", email + "/" + password);
+            //yet to be added->
+//            internetIsConnected();
+//            isNetworkConnected();
+//            checkUniqueUserName(username);
+
 
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -143,7 +154,6 @@ public class SignUpActivity extends AppCompatActivity {
                         userInfo.put( "username", username);
                         currentUserDb.updateChildren(userInfo);
                     }
-
                 }
             });
         }
@@ -157,11 +167,34 @@ public class SignUpActivity extends AppCompatActivity {
     HashSet<String> userNamesSet=new HashSet<String>();
     public boolean checkUniqueUserName(String userName){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-        if(userNamesSet.contains(userName)){
+        //fill in the usernameSet
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return !userNamesSet.contains(userName);
+    }
+
+    public boolean internetIsConnected() {
+        try {
+            String command = "ping -c 1 google.com";
+            return (Runtime.getRuntime().exec(command).waitFor() == 0);
+        } catch (Exception e) {
             return false;
-        }else{
-            return true;
         }
+    }
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getApplication().getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 
     @Override

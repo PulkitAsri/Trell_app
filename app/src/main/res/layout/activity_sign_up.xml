@@ -5,15 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context=".SignUpActivity"><![CDATA[
-
-
-
-
-
-
-
-
+    tools:context=".SignUpActivity"
+    tools:ignore="ExtraText">
+    <![CDATA[
 
     Confirm Password
         parent
@@ -21,63 +15,7 @@
         parent
         @+id/signupPasswordEditText
 
-
-
-
     />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     ]]>
 
@@ -92,6 +30,7 @@
         android:hint="First Name"
         android:textColorHint="#C3BBBB"
         android:textSize="16sp"
+        android:inputType="textCapWords"
         app:layout_constraintBottom_toTopOf="@+id/signupEmailEditText"
         app:layout_constraintEnd_toStartOf="@+id/signupLastnameEditText"
         app:layout_constraintStart_toStartOf="parent" />
@@ -106,6 +45,7 @@
         android:hint="Last Name"
         android:textColorHint="#C3BBBB"
         android:textSize="16sp"
+        android:inputType="textCapWords"
         app:layout_constraintBottom_toTopOf="@+id/signupEmailEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/signupFirstnameEditText" />
@@ -184,7 +124,7 @@
     <EditText
         android:id="@+id/date"
         android:layout_width="151dp"
-        android:layout_height="42dp"
+        android:layout_height="45dp"
         android:backgroundTint="#FFC3BBBB"
         android:editable="false"
         android:hint="dd/mm/yyyy"
@@ -198,8 +138,8 @@
 
     <ImageView
         android:id="@+id/datepicker"
-        android:layout_width="44dp"
-        android:layout_height="41dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_toRightOf="@id/date"
         android:src="@drawable/calender_icon"
         app:layout_constraintBottom_toBottomOf="@+id/date"
@@ -223,13 +163,13 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="71dp"
-        android:layout_height="43dp"
+        android:layout_height="45dp"
+        android:flow_horizontalAlign="center"
+        android:flow_verticalAlign="center"
+        android:gravity="center_horizontal|center_vertical"
         android:text="DOB: "
-        android:textAlignment="center"
         android:textColor="#C3BBBB"
         android:textSize="20dp"
-        app:flow_horizontalAlign="center"
-        app:flow_verticalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/signupButton"
         app:layout_constraintStart_toStartOf="@+id/signupConfirmPasswordEditText"
         app:layout_constraintTop_toBottomOf="@+id/signupConfirmPasswordEditText" />
