@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class CategoriesChooseActivity extends AppCompatActivity {
 
 
-    private Button mfood, mrecipies, mreviews, mfashion, mfitness, mtravel, mbeauty, mpersonalcare, mgadgets, msports, mchallenges, mmotivating, mfamily, mmusic, mtech;
+    public Button mfood, mrecipies, mreviews, mfashion, mfitness, mtravel, mbeauty, mpersonalcare, mgadgets, msports, mchallenges, mmotivating, mfamily, mmusic, mtech;
     private Button submitButton;
 
     private boolean[] categories;
@@ -25,7 +25,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_categories_choose);
 
 
         categories = new boolean[15];

@@ -214,12 +214,14 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="194dp"
-        android:layout_height="83dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Categories"
         android:textAlignment="center"
         android:textSize="36sp"
         app:flow_verticalAlign="center"
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="50dp" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
