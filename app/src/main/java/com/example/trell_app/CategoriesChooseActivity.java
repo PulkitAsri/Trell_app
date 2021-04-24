@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 //import android.support.v7.app.AppCompatActivity;
 //import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,10 +17,10 @@ import java.util.ArrayList;
 public class CategoriesChooseActivity extends AppCompatActivity {
 
 
-    private Button mfood, mrecipies, mreviews, mfashion, mfitness, mtravel, mbeauty, mpersonalcare, mgadgets, msports, mchallenges, mmotivating, mfamily, mmusic, mtech;
-    private Button submitButton;
+    public Button mfood, mrecipies, mreviews, mfashion, mfitness, mtravel, mbeauty, mpersonalcare, mgadgets, msports, mchallenges, mmotivating, mfamily, mmusic, mtech;
+    public Button submitButton;
 
-    private boolean[] categories;
+    public boolean[] categories;
     final int[] selected = {0};
 
     @Override
@@ -35,6 +36,7 @@ public class CategoriesChooseActivity extends AppCompatActivity {
         }
 
         mfood = findViewById(R.id.food);
+
         mfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {categories[0] = !categories[0];

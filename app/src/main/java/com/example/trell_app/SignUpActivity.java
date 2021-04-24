@@ -63,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.i("Auth Started","");
                 if(user!=null){
                     Log.i("Auth Starte in ","");
-                    Intent intent= new Intent(getApplicationContext(), CategoriesChooseActivity.class);
+                    Intent intent= new Intent(getApplicationContext(), HomeActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                     finish();
@@ -142,7 +142,6 @@ public class SignUpActivity extends AppCompatActivity {
                         userInfo.put( "dob",dob);
                         userInfo.put( "username", username);
                         currentUserDb.updateChildren(userInfo);
-
                     }
 
                 }

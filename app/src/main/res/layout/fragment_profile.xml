@@ -12,14 +12,15 @@
         android:id="@+id/profileName"
         android:layout_width="139dp"
         android:layout_height="29dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="108dp"
+        android:layout_marginEnd="106dp"
         android:text="Elon Musk"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
         android:textSize="22dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.562"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profilePictureButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
