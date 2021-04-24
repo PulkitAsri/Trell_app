@@ -142,7 +142,6 @@ public class SignUpActivity extends AppCompatActivity {
                         userInfo.put( "dob",dob);
                         userInfo.put( "username", username);
                         currentUserDb.updateChildren(userInfo);
-
                     }
 
                 }
