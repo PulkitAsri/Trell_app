@@ -42,13 +42,6 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
         return mediaObjectList.size();
     }
 
-
-
-
-
-
-
-
     //Holder
     public class MediaPostHolder extends RecyclerView.ViewHolder{
         public MediaPostHolder(@NonNull View itemView) {

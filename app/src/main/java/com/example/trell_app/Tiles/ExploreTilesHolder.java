@@ -1,5 +1,6 @@
 package com.example.trell_app.Tiles;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trell_app.R;
 
-public class ExploreTilesHolder extends RecyclerView.ViewHolder {
+public class ExploreTilesHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     ImageView mThumbnail ;
     TextView mThumbnailLikes;
     TextView mThumbnailUserId;
@@ -20,6 +21,13 @@ public class ExploreTilesHolder extends RecyclerView.ViewHolder {
         mThumbnailLikes=view.findViewById(R.id.thumbnailLikes);
         mThumbnailUserId=view.findViewById(R.id.thumbnailUserId);
         mThumbnailTitle=view.findViewById(R.id.thumbnailTitle);
+        view.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
 
     }
 }

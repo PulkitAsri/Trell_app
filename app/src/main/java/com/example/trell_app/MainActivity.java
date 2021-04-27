@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     public void gotoHomeActivity(){
-        Intent intent= new Intent(this , HomeActivity.class);
+        Intent intent= new Intent(this , FullScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
