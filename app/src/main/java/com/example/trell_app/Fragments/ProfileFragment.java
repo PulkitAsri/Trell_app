@@ -65,6 +65,10 @@ public class ProfileFragment extends Fragment {
         mName=view.findViewById(R.id.profileName);
         mUsername=view.findViewById(R.id.profileUserName);
         mLogout=view.findViewById(R.id.logoutButton);
+        mPostCount=view.findViewById(R.id.profilePostCount);
+        mFollowers=view.findViewById(R.id.profileFollowers);
+        mFollowing=view.findViewById(R.id.profileFollowing);
+
 
         mAuth=FirebaseAuth.getInstance();
         profileRef=FirebaseDatabase.getInstance().getReference()

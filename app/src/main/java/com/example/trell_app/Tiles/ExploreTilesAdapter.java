@@ -15,12 +15,12 @@ import java.util.List;
 
 public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder> {
 
-    ArrayList<ExploreTilesObject> userList;
+    ArrayList<ExploreTilesObject> postsList;
     Context context;
     LayoutInflater inflater;
 
     public ExploreTilesAdapter(ArrayList<ExploreTilesObject> userList, Context context) {
-        this.userList = userList;
+        this.postsList = userList;
         this.context = context;
         this.inflater=LayoutInflater.from(context);
     }
@@ -35,15 +35,16 @@ public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder
 
     @Override
     public void onBindViewHolder(@NonNull ExploreTilesHolder holder, int position) {
-        holder.mThumbnailLikes.setText(String.valueOf(userList.get(position).noOfLikes));
-        holder.mThumbnailTitle.setText(userList.get(position).title);
-        holder.mThumbnailUserId.setText(userList.get(position).username);
+        holder.mThumbnailLikes.setText(String.valueOf(postsList.get(position).noOfLikes));
+        holder.mThumbnailTitle.setText(postsList.get(position).title);
+        holder.mThumbnailUserId.setText(postsList.get(position).username);
         holder.mThumbnail.setImageResource(R.drawable.doggy);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return postsList.size();
     }
 }
