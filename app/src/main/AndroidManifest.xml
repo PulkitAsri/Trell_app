@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trell_app">
-        <activity android:name=".FullScreenActivity"></activity>
+        <activity android:name=".FullScreenActivity"
+            android:theme="@style/Fullscreen"></activity>
         <activity android:name=".CategoriesChooseActivity" /> <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" -->
         <!-- android:value="@string/facebook_app_id"/> -->
         <!-- <activity android:name="com.facebook.FacebookActivity" -->

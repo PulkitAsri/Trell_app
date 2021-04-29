@@ -1,44 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff" >
+    android:background="#ffffff">
 
-    <LinearLayout
+    <VideoView
+        android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="right"
-        android:weightSum="10"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/fullLoadingProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:layout_weight="9"
-            android:paddingRight="15dp"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/fullDescTextView"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Bio lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/fullTitleTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fullTitleTextView" />
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src=""/>
+    <LinearLayout
+        android:layout_width="67dp"
+        android:layout_height="261dp"
+        android:layout_weight="9"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingRight="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81">
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+        <ImageButton
+            android:id="@+id/likeButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_heart" />
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
+        <ImageButton
+            android:id="@+id/reactButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_heart" />
 
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp" />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/commentButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_heart" />
+
+        <ImageButton
+            android:id="@+id/shareButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_heart" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/fullTitleTextView"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:text="Title Title Title "
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/fullDescTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:text="/@username"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/fullTitleTextView"
+        app:layout_constraintEnd_toEndOf="@+id/fullTitleTextView"
+        app:layout_constraintStart_toStartOf="@+id/fullTitleTextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

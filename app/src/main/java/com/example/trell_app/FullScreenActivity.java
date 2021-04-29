@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ public class FullScreenActivity extends AppCompatActivity {
 
     List<MediaObject> mediaObjectList=new ArrayList<>();
 
-    RecyclerView recyclerView;
+    ViewPager2 viewPager2;
     LinearLayoutManager linearLayoutManager;
     MediaPostAdapter adapter;
 
@@ -32,31 +33,27 @@ public class FullScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_screen);
 
 
-        recyclerView=findViewById(R.id.fullScreenRecyclerView);
+        viewPager2=findViewById(R.id.fullScreenVideoViewPager);
         linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
 
 
 
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
-        mediaObjectList.add(new MediaObject("","","","","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-pool-1259-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-young-mother-with-her-little-daughter-decorating-a-christmas-tree-39745-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-father-and-his-little-daughter-eating-marshmallows-in-nature-39765-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-pool-1259-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-young-mother-with-her-little-daughter-decorating-a-christmas-tree-39745-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-father-and-his-little-daughter-eating-marshmallows-in-nature-39765-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
 
         adapter=new MediaPostAdapter(mediaObjectList, getApplicationContext());
 
-        recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(adapter);
+        viewPager2.setAdapter(adapter);
 
-
-        SnapHelper snapHelper=new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(recyclerView);
         adapter.notifyDataSetChanged();
 
     }
