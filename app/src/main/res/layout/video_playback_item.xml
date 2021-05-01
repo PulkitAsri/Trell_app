@@ -40,8 +40,8 @@
         app:layout_constraintStart_toStartOf="@+id/fullTitleTextView" />
 
     <LinearLayout
-        android:layout_width="67dp"
-        android:layout_height="261dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_weight="9"
         android:gravity="bottom"
         android:orientation="vertical"
@@ -58,6 +58,27 @@
             android:background="#00FFFFFF"
             android:scaleType="centerCrop"
             android:src="@drawable/white_heart" />
+        <TextView
+            android:id="@+id/fullNoOfLikes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="9810"
+            android:textAlignment="center"
+            />
+        <ImageButton
+            android:id="@+id/commentButton"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/white_heart" />
+        <TextView
+            android:id="@+id/fullNoOfComments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="9810"
+            android:textAlignment="center"
+            />
 
         <ImageButton
             android:id="@+id/reactButton"
@@ -66,15 +87,12 @@
             android:background="#00FFFFFF"
             android:scaleType="centerCrop"
             android:src="@drawable/white_heart" />
-
-        <ImageButton
-            android:id="@+id/commentButton"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="#00FFFFFF"
-            android:scaleType="centerCrop"
-            android:src="@drawable/white_heart" />
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textAlignment="center"
+            />
         <ImageButton
             android:id="@+id/shareButton"
             android:layout_width="55dp"

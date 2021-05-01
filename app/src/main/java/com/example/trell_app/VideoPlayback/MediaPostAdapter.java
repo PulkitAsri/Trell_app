@@ -83,6 +83,7 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
         void setVideoPostData(MediaObject mediaObject){
             titleTextView.setText(mediaObject.getTitle());
             descTextView.setText(mediaObject.getDesc());
+
             videoView.setVideoURI(Uri.parse(mediaObject.getMediaUrl()));
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override

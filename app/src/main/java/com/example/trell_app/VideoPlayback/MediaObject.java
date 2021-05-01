@@ -1,14 +1,32 @@
 package com.example.trell_app.VideoPlayback;
 
+import androidx.transition.Transition;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MediaObject {
 
     public MediaObject(){
-        //just for now
+
     }
 
-    private String thumbnail,mediaUrl,title,desc,date,userId,views,postId,userName;
 
-    public MediaObject(String thumbnail, String mediaUrl, String title, String desc, String date, String userId, String views, String postId, String userName) {
+    private String thumbnail;
+    private String mediaUrl;
+    private String title;
+    private String desc;
+    private String date;
+    private String userId;
+    private Long views;
+    private String postId;
+    private String userName;
+    private Long noOfLikes;
+    private Long noOfComments;
+    Map<String,Object> likes,comments;
+
+
+    public MediaObject(String postId, String userId, String thumbnail, String mediaUrl, String title, String desc, String date, long views, String userName, Object likes, long noOfLikes, Object comments, long noOfComments){
         this.thumbnail = thumbnail;
         this.mediaUrl = mediaUrl;
         this.title = title;
@@ -18,7 +36,41 @@ public class MediaObject {
         this.views = views;
         this.postId = postId;
         this.userName = userName;
+        this.likes = (Map<String, Object>) likes;
+        this.noOfLikes = noOfLikes;
+        this.comments = (Map<String, Object>)comments;
+        this.noOfComments = noOfComments;//just for now
     }
+
+
+
+    public MediaObject(String postId,String userId,String thumbnail, String mediaUrl, String title, String desc, String date,  Long views,  String userName, HashMap likes, Long noOfLikes, HashMap comments, Long noOfComments) {
+        this.thumbnail = thumbnail;
+        this.mediaUrl = mediaUrl;
+        this.title = title;
+        this.desc = desc;
+        this.date = date;
+        this.userId = userId;
+        this.views = views;
+        this.postId = postId;
+        this.userName = userName;
+        this.likes = likes;
+        this.noOfLikes = noOfLikes;
+        this.comments = comments;
+        this.noOfComments = noOfComments;
+    }
+
+//    public MediaObject(String thumbnail, String mediaUrl, String title, String desc, String date, String userId, String views, String postId, String userName) {
+//        this.thumbnail = thumbnail;
+//        this.mediaUrl = mediaUrl;
+//        this.title = title;
+//        this.desc = desc;
+//        this.date = date;
+//        this.userId = userId;
+//        this.views = views;
+//        this.postId = postId;
+//        this.userName = userName;
+//    }
 
     public String getThumbnail() {
         return thumbnail;
@@ -68,11 +120,11 @@ public class MediaObject {
         this.userId = userId;
     }
 
-    public String getViews() {
+    public Long getViews() {
         return views;
     }
 
-    public void setViews(String views) {
+    public void setViews(Long views) {
         this.views = views;
     }
 
@@ -90,5 +142,37 @@ public class MediaObject {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public Map<String, Object> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(Map likes) {
+        this.likes = likes;
+    }
+
+    public Long getNoOfLikes() {
+        return noOfLikes;
+    }
+
+    public void setNoOfLikes(Long noOfLikes) {
+        this.noOfLikes = noOfLikes;
+    }
+
+    public Map<String, Object> getComments() {
+        return comments;
+    }
+
+    public void setComments(Map comments) {
+        this.comments = comments;
+    }
+
+    public Long getNoOfComments() {
+        return noOfComments;
+    }
+
+    public void setNoOfComments(long noOfComments) {
+        this.noOfComments = noOfComments;
     }
 }
