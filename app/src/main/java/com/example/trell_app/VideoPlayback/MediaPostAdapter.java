@@ -55,6 +55,11 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
     public class MediaPostHolder extends RecyclerView.ViewHolder{
         TextView titleTextView;
         TextView descTextView;
+        TextView likesTextView;
+        TextView commentsTextView;
+        TextView userNameTextView;
+
+
         ImageButton likeButton;
         ImageButton commentButton;
         ImageButton reactButton;
@@ -68,6 +73,10 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
 
             titleTextView = itemView.findViewById(R.id.fullTitleTextView);
             descTextView = itemView.findViewById(R.id.fullDescTextView);
+            likesTextView=itemView.findViewById(R.id.fullNoOfLikes);
+            commentsTextView=itemView.findViewById(R.id.fullNoOfComments);
+            userNameTextView=itemView.findViewById(R.id.fullUsernameTextView);
+
 
             likeButton=itemView.findViewById(R.id.likeButton);
             commentButton=itemView.findViewById(R.id.commentButton);
@@ -83,6 +92,9 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
         void setVideoPostData(MediaObject mediaObject){
             titleTextView.setText(mediaObject.getTitle());
             descTextView.setText(mediaObject.getDesc());
+            likesTextView.setText(mediaObject.getNoOfLikes().toString());
+            commentsTextView.setText(mediaObject.getNoOfComments().toString());
+            userNameTextView.setText(mediaObject.getUserName());
 
             videoView.setVideoURI(Uri.parse(mediaObject.getMediaUrl()));
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {

@@ -58,13 +58,14 @@
             android:background="#00FFFFFF"
             android:scaleType="centerCrop"
             android:src="@drawable/white_heart" />
+
         <TextView
             android:id="@+id/fullNoOfLikes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="9810"
             android:textAlignment="center"
-            />
+            android:textColor="#000000" />
         <ImageButton
             android:id="@+id/commentButton"
             android:layout_width="55dp"
@@ -78,6 +79,7 @@
             android:layout_height="match_parent"
             android:text="9810"
             android:textAlignment="center"
+            android:textColor="#000000"
             />
 
         <ImageButton
@@ -107,15 +109,17 @@
         android:layout_width="295dp"
         android:layout_height="wrap_content"
         android:text="Title Title Title "
+        android:textAllCaps="false"
         android:textColor="#000000"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/fullDescTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/fullUsernameTextView"
         android:layout_width="295dp"
         android:layout_height="wrap_content"
         android:text="/@username"
