@@ -3,6 +3,7 @@ package com.example.trell_app.Tiles;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ public class ExploreTilesHolder extends RecyclerView.ViewHolder implements View.
     TextView mThumbnailLikes;
     TextView mThumbnailUserId;
     TextView mThumbnailTitle;
+    ProgressBar loading;
 
     public ExploreTilesHolder(View view){
         super(view);
@@ -21,6 +23,7 @@ public class ExploreTilesHolder extends RecyclerView.ViewHolder implements View.
         mThumbnailLikes=view.findViewById(R.id.thumbnailLikes);
         mThumbnailUserId=view.findViewById(R.id.thumbnailUserId);
         mThumbnailTitle=view.findViewById(R.id.thumbnailTitle);
+        loading=view.findViewById(R.id.exploreLoadingProgressBar);
         view.setOnClickListener(this);
 
     }

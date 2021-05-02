@@ -1,12 +1,14 @@
 package com.example.trell_app.Tiles;
 
 public class ExploreTilesObject {
+    String postId;
     String thumbnailUrl;
-    int noOfLikes;
+    long noOfLikes;
     String username;
     String title;
 
-    public ExploreTilesObject(String thumbnailUrl, int noOfLikes, String username, String title) {
+    public ExploreTilesObject(String postId, String thumbnailUrl, long noOfLikes, String username, String title) {
+        this.postId = postId;
         this.thumbnailUrl = thumbnailUrl;
         this.noOfLikes = noOfLikes;
         this.username = username;
@@ -21,11 +23,11 @@ public class ExploreTilesObject {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public int getNoOfLikes() {
+    public long getNoOfLikes() {
         return noOfLikes;
     }
 
-    public void setNoOfLikes(int noOfLikes) {
+    public void setNoOfLikes(long noOfLikes) {
         this.noOfLikes = noOfLikes;
     }
 
@@ -43,5 +45,13 @@ public class ExploreTilesObject {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
     }
 }

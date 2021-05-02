@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.trell_app.Fragments.ExploreFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
     public void gotoHomeActivity(){
-        Intent intent= new Intent(this , FullScreenActivity.class);
+        Intent intent= new Intent(this , HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

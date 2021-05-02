@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -15,6 +16,7 @@ import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.trell_app.R;
 
 import java.sql.PreparedStatement;
@@ -64,6 +66,7 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
         ImageButton commentButton;
         ImageButton reactButton;
         ImageButton shareButton;
+        ImageView mFullThumbnail;
         VideoView videoView;
         ProgressBar loading;
 
@@ -76,6 +79,7 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
             likesTextView=itemView.findViewById(R.id.fullNoOfLikes);
             commentsTextView=itemView.findViewById(R.id.fullNoOfComments);
             userNameTextView=itemView.findViewById(R.id.fullUsernameTextView);
+            mFullThumbnail=itemView.findViewById(R.id.fullThumbnailImageView);
 
 
             likeButton=itemView.findViewById(R.id.likeButton);
@@ -96,12 +100,13 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
             commentsTextView.setText(mediaObject.getNoOfComments().toString());
             userNameTextView.setText(mediaObject.getUserName());
 
+            Glide.with(context).load(mediaObject.getThumbnail()).into(mFullThumbnail);
+
             videoView.setVideoURI(Uri.parse(mediaObject.getMediaUrl()));
             videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
                     loading.setVisibility(View.GONE);
-                    mp.start();
 
                     float videoRatio=mp.getVideoWidth()/(float)mp.getVideoHeight();
                     float screenRatio=videoView.getWidth()/(float)videoView.getHeight();
@@ -110,6 +115,8 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
                     if(scale >=1f) videoView.setScaleX(scale);
                     else videoView.setScaleY(1f/scale);
 
+                    mp.start();
+                    mFullThumbnail.setVisibility(View.GONE);
                     mp.setLooping(true);
                 }
             });

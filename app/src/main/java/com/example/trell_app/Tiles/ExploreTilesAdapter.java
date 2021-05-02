@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.trell_app.R;
 
 import java.util.ArrayList;
@@ -39,6 +40,14 @@ public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder
         holder.mThumbnailTitle.setText(postsList.get(position).title);
         holder.mThumbnailUserId.setText(postsList.get(position).username);
         holder.mThumbnail.setImageResource(R.drawable.doggy);
+
+        String thumbnailUrl=postsList.get(position).thumbnailUrl;
+
+        if(thumbnailUrl!=null&& !thumbnailUrl.equals("")){
+            Glide.with(context).load(thumbnailUrl).dontAnimate().into(holder.mThumbnail);
+            holder.loading.setVisibility(View.GONE);
+
+        }
 
 
     }

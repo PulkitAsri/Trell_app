@@ -4,12 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#00FFFFFF">
 
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fullThumbnailImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,8 +40,8 @@
     <TextView
         android:id="@+id/fullDescTextView"
         android:layout_width="295dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="52dp"
         android:text="Bio lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum lerioum ipsum"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -66,6 +77,7 @@
             android:text="9810"
             android:textAlignment="center"
             android:textColor="#000000" />
+
         <ImageButton
             android:id="@+id/commentButton"
             android:layout_width="55dp"
@@ -73,14 +85,14 @@
             android:background="#00FFFFFF"
             android:scaleType="centerCrop"
             android:src="@drawable/white_heart" />
+
         <TextView
             android:id="@+id/fullNoOfComments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="9810"
             android:textAlignment="center"
-            android:textColor="#000000"
-            />
+            android:textColor="#000000" />
 
         <ImageButton
             android:id="@+id/reactButton"
@@ -89,12 +101,13 @@
             android:background="#00FFFFFF"
             android:scaleType="centerCrop"
             android:src="@drawable/white_heart" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text=""
-            android:textAlignment="center"
-            />
+            android:textAlignment="center" />
+
         <ImageButton
             android:id="@+id/shareButton"
             android:layout_width="55dp"
