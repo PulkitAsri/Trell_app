@@ -1,6 +1,7 @@
 package com.example.trell_app.Tiles;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.trell_app.FullScreenActivity;
+import com.example.trell_app.LogInActivity;
 import com.example.trell_app.R;
 
 import java.util.ArrayList;
@@ -46,8 +49,17 @@ public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder
         if(thumbnailUrl!=null&& !thumbnailUrl.equals("")){
             Glide.with(context).load(thumbnailUrl).dontAnimate().into(holder.mThumbnail);
             holder.loading.setVisibility(View.GONE);
-
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(context , FullScreenActivity.class);
+                intent.putExtra("postId",postsList.get(position).postId);
+                context.startActivity(intent);
+
+            }
+        });
 
 
     }

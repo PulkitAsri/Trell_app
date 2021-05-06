@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.trell_app.R;
 
-public class ExploreTilesHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ExploreTilesHolder extends RecyclerView.ViewHolder {
     ImageView mThumbnail ;
     TextView mThumbnailLikes;
     TextView mThumbnailUserId;
@@ -24,13 +24,10 @@ public class ExploreTilesHolder extends RecyclerView.ViewHolder implements View.
         mThumbnailUserId=view.findViewById(R.id.thumbnailUserId);
         mThumbnailTitle=view.findViewById(R.id.thumbnailTitle);
         loading=view.findViewById(R.id.exploreLoadingProgressBar);
-        view.setOnClickListener(this);
-
-    }
-
-    @Override
-    public void onClick(View v) {
 
 
     }
+
+
+
 }

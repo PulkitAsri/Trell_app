@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -18,11 +19,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FullScreenActivity extends AppCompatActivity {
 
     List<MediaObject> mediaObjectList=new ArrayList<>();
+
+    HashMap<String,MediaObject> postIdMap=new HashMap();
 
     ViewPager2 viewPager2;
     LinearLayoutManager linearLayoutManager;
@@ -38,6 +43,8 @@ public class FullScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_screen);
 
         mAuth= FirebaseAuth.getInstance();
+        Intent intent=getIntent();
+        String selectedPostId=intent.getStringExtra("postId");
 
 
         viewPager2=findViewById(R.id.fullScreenVideoViewPager);
@@ -47,6 +54,9 @@ public class FullScreenActivity extends AppCompatActivity {
         viewPager2.setAdapter(adapter);
 
         adapter.notifyDataSetChanged();
+//        Log.i("IndexIs ", selectedPostId + " " + postIdMap.size() + " " + mediaObjectList.size());
+//        Log.i("IndexIs ", String.valueOf(postIdMap.get(selectedPostId).getPostId()));
+//        viewPager2.setCurrentItem(mediaObjectList.indexOf(postIdMap.get(selectedPostId)));
 
 //        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
 //        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
@@ -68,8 +78,9 @@ public class FullScreenActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String postId=dataSnapshot.getKey();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String postId=snapshot.getKey();
                     MediaObject mediaObject = new MediaObject(
                             postId,
                             snapshot.child("userId").getValue().toString(),
@@ -86,15 +97,25 @@ public class FullScreenActivity extends AppCompatActivity {
                             Long.parseLong(snapshot.child("noOfComments").getValue().toString())
                     );
                     mediaObjectList.add(mediaObject);
+                    Log.i("TAG",postId);
+                    postIdMap.put(postId,mediaObject);
+
                     Log.i("mediaSize", String.valueOf(mediaObjectList.size()));
                 }
+                Log.i("IndexIs Inside ",  " " + postIdMap.size() + " " + mediaObjectList.size());
+
                 adapter.notifyDataSetChanged();
+                Log.i("IndexIs Inside ",  " " + postIdMap.size() + " " + mediaObjectList.size());
+
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+        Log.i("IndexIs Inside ",  " " + postIdMap.size() + " " + mediaObjectList.size());
+
         return mediaObjectList;
+
 
     }
 }

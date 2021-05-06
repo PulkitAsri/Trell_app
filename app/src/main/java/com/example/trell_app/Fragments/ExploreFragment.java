@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ExploreFragment extends Fragment {
+public class ExploreFragment extends Fragment  {
 
     RecyclerView mExploreTiles;
     private ExploreTilesAdapter mAdapter;
@@ -63,8 +63,9 @@ public class ExploreFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String postId=dataSnapshot.getKey();
+
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    String postId=snapshot.getKey();
                     ExploreTilesObject exploreTilesObject = new ExploreTilesObject(
                             postId,
                             snapshot.child("thumbnail").getValue().toString(),
