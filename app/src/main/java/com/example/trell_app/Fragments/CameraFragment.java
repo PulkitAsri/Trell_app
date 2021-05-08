@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +13,28 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.core.ViewPort;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.fragment.app.Fragment;
 
 import com.example.trell_app.R;
+import com.example.trell_app.UploadingPostActivity;
 import com.example.trell_app.VideoPlayback.MediaObject;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.net.URI;
 
@@ -42,7 +53,7 @@ public class CameraFragment  extends Fragment {
 
     VideoView videoView;
     MediaController mediaController;
-
+    private Uri mediaUrl;
 
 
     public static CameraFragment newInstance(){
@@ -66,6 +77,7 @@ public class CameraFragment  extends Fragment {
         loading=view.findViewById(R.id.uploadVideoLoadingProgressBar);
 
         chooseVideoButton=view.findViewById(R.id.chooseVideoButton);
+        uploadVideoButton=view.findViewById(R.id.uploadVideoButton);
 
         chooseVideoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,43 +92,6 @@ public class CameraFragment  extends Fragment {
             }
         });
 
-        //viewPort = ((PreviewView)view.findViewById(R.id.cameraPreview)).getViewPort();
-//
-//        cameraProviderFuture.addListener(() -> {
-//            try {
-//                ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
-//                bindPreview(cameraProvider);
-//            } catch (ExecutionException | InterruptedException e) {
-//                // No errors need to be handled for this Future.
-//                // This should never be reached.
-//            }
-//        }, ContextCompat.getMainExecutor(getContext()));
-//
-//
-//        ImageCapture imageCapture = new ImageCapture.Builder().build();
-//
-//        OrientationEventListener orientationEventListener = new OrientationEventListener(getContext()) {
-//            @Override
-//            public void onOrientationChanged(int orientation) {
-//                int rotation;
-//
-//                // Monitors orientation values to determine the target rotation value
-//                if (orientation >= 45 && orientation < 135) {
-//                    rotation = Surface.ROTATION_270;
-//                } else if (orientation >= 135 && orientation < 225) {
-//                    rotation = Surface.ROTATION_180;
-//                } else if (orientation >= 225 && orientation < 315) {
-//                    rotation = Surface.ROTATION_90;
-//                } else {
-//                    rotation = Surface.ROTATION_0;
-//                }
-//
-//                imageCapture.setTargetRotation(rotation);
-//            }
-//        };
-//
-//        orientationEventListener.enable();
-//
 
 
         return view;
@@ -137,9 +112,71 @@ public class CameraFragment  extends Fragment {
         loading.setVisibility(View.VISIBLE);
         if(videoURI!=null){
 
-            StorageReference ref= FirebaseStorage.getInstance().getReference().child("videos");
-        }
+            long systemMillis=System.currentTimeMillis();
+            StorageReference ref= FirebaseStorage.getInstance().getReference()
+                    .child("videos")
+                    .child(systemMillis + "." + getFileExt(videoURI));
 
+//          UPLOADING TASK
+
+
+            UploadTask uploadTask=ref.putFile(videoURI);
+
+            uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                    Log.d("PROGRESS", "Upload is " + progress + "% done");
+                }
+            })
+            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    loading.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getContext(), "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                }
+            })
+            .addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+//          RETREIVING THE DOWNLOAD URL
+
+
+            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        throw task.getException();
+                    }
+                    // Continue with the task to get the download URL
+                    return ref.getDownloadUrl();
+                }
+            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                @Override
+                public void onComplete(@NonNull Task<Uri> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUri = task.getResult();
+                        mediaUrl=downloadUri;
+                        Log.i("DOWNLOAD URL",downloadUri.toString());
+
+                        //To the next Activity!
+                        Intent intent=new Intent(getContext(), UploadingPostActivity.class);
+                        intent.putExtra("mediaUrl",mediaUrl);
+                        startActivity(intent);
+
+
+                    } else {
+                        // Handle failures
+
+                    }
+                }
+            });
+        }
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -153,5 +190,7 @@ public class CameraFragment  extends Fragment {
 
         }
     }
+
+
 }
 
