@@ -13,17 +13,18 @@ import com.bumptech.glide.Glide;
 import com.example.trell_app.FullScreenActivity;
 import com.example.trell_app.LogInActivity;
 import com.example.trell_app.R;
+import com.example.trell_app.VideoPlayback.MediaObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder> {
 
-    ArrayList<ExploreTilesObject> postsList;
+    ArrayList<MediaObject> postsList;
     Context context;
     LayoutInflater inflater;
 
-    public ExploreTilesAdapter(ArrayList<ExploreTilesObject> userList, Context context) {
+    public ExploreTilesAdapter(ArrayList<MediaObject> userList, Context context) {
         this.postsList = userList;
         this.context = context;
         this.inflater=LayoutInflater.from(context);
@@ -39,12 +40,12 @@ public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder
 
     @Override
     public void onBindViewHolder(@NonNull ExploreTilesHolder holder, int position) {
-        holder.mThumbnailLikes.setText(String.valueOf(postsList.get(position).noOfLikes));
-        holder.mThumbnailTitle.setText(postsList.get(position).title);
-        holder.mThumbnailUserId.setText(postsList.get(position).username);
+        holder.mThumbnailLikes.setText(String.valueOf(postsList.get(position).getNoOfLikes()));
+        holder.mThumbnailTitle.setText(postsList.get(position).getTitle());
+        holder.mThumbnailUserId.setText(postsList.get(position).getUserName());
         holder.mThumbnail.setImageResource(R.drawable.doggy);
 
-        String thumbnailUrl=postsList.get(position).thumbnailUrl;
+        String thumbnailUrl=postsList.get(position).getThumbnail();
 
         if(thumbnailUrl!=null&& !thumbnailUrl.equals("")){
             Glide.with(context).load(thumbnailUrl).dontAnimate().into(holder.mThumbnail);
@@ -55,7 +56,8 @@ public class ExploreTilesAdapter extends RecyclerView.Adapter<ExploreTilesHolder
             @Override
             public void onClick(View v) {
                 Intent intent= new Intent(context , FullScreenActivity.class);
-                intent.putExtra("postId",postsList.get(position).postId);
+//                intent.putExtra("postId",postsList.get(position).getPostId());
+                intent.putExtra("position",position);
                 context.startActivity(intent);
 
             }

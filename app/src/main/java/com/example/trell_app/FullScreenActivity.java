@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.trell_app.Fragments.ExploreFragment;
 import com.example.trell_app.VideoPlayback.MediaObject;
 import com.example.trell_app.VideoPlayback.MediaPostAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,30 +45,24 @@ public class FullScreenActivity extends AppCompatActivity {
 
         mAuth= FirebaseAuth.getInstance();
         Intent intent=getIntent();
-        String selectedPostId=intent.getStringExtra("postId");
+//        String selectedPostId=intent.getStringExtra("postId");
+         int positionTouched = intent.getExtras().getInt("position");
 
+        Log.i("INTENT"," "+positionTouched);
+
+        mediaObjectList=ExploreFragment.postsList;
+//        listenForData();
 
         viewPager2=findViewById(R.id.fullScreenVideoViewPager);
         linearLayoutManager=new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        adapter=new MediaPostAdapter(listenForData(), getApplicationContext());
+        adapter=new MediaPostAdapter(mediaObjectList, getApplicationContext());
         viewPager2.setAdapter(adapter);
+        viewPager2.setCurrentItem(positionTouched,true);
 
         adapter.notifyDataSetChanged();
-//        Log.i("IndexIs ", selectedPostId + " " + postIdMap.size() + " " + mediaObjectList.size());
-//        Log.i("IndexIs ", String.valueOf(postIdMap.get(selectedPostId).getPostId()));
-//        viewPager2.setCurrentItem(mediaObjectList.indexOf(postIdMap.get(selectedPostId)));
 
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-pool-1259-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-young-mother-with-her-little-daughter-decorating-a-christmas-tree-39745-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-father-and-his-little-daughter-eating-marshmallows-in-nature-39765-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-man-under-multicolored-lights-1237-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-portrait-of-a-woman-in-a-pool-1259-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-young-mother-with-her-little-daughter-decorating-a-christmas-tree-39745-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
-//        mediaObjectList.add(new MediaObject("","https://assets.mixkit.co/videos/preview/mixkit-father-and-his-little-daughter-eating-marshmallows-in-nature-39765-large.mp4","Title Here!","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua","","","","",""));
+
 
     }
 
@@ -97,22 +92,17 @@ public class FullScreenActivity extends AppCompatActivity {
                             Long.parseLong(snapshot.child("noOfComments").getValue().toString())
                     );
                     mediaObjectList.add(mediaObject);
-                    Log.i("TAG",postId);
-                    postIdMap.put(postId,mediaObject);
 
                     Log.i("mediaSize", String.valueOf(mediaObjectList.size()));
                 }
-                Log.i("IndexIs Inside ",  " " + postIdMap.size() + " " + mediaObjectList.size());
 
                 adapter.notifyDataSetChanged();
-                Log.i("IndexIs Inside ",  " " + postIdMap.size() + " " + mediaObjectList.size());
 
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        Log.i("IndexIs Inside ",  " " + postIdMap.size() + " " + mediaObjectList.size());
 
         return mediaObjectList;
 
