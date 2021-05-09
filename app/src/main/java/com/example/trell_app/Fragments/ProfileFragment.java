@@ -150,7 +150,6 @@ public class ProfileFragment extends Fragment {
         if(selectedImage==null) return;
 
         String filename = UUID.randomUUID().toString();
-
         StorageReference ref = FirebaseStorage.getInstance().getReference()
                 .child("profilePictures").child(filename);
 
