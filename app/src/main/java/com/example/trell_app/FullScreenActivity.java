@@ -58,10 +58,11 @@ public class FullScreenActivity extends AppCompatActivity {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         adapter=new MediaPostAdapter(mediaObjectList, getApplicationContext());
         viewPager2.setAdapter(adapter);
-        viewPager2.setCurrentItem(positionTouched,true);
 
+        viewPager2.post(() -> viewPager2.setCurrentItem(positionTouched,false));
+
+//        viewPager2.setCurrentItem(positionTouched,false);
         adapter.notifyDataSetChanged();
-
 
 
     }
