@@ -52,7 +52,7 @@ public class CameraFragment  extends Fragment {
     ProgressBar loading;
 
     VideoView videoView;
-    private Uri mediaUrl;
+    private String mediaUrl;
 
 
     public static CameraFragment newInstance(){
@@ -143,8 +143,8 @@ public class CameraFragment  extends Fragment {
             }).addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     Uri downloadUri = task.getResult();
-                    mediaUrl=downloadUri;
-                    Log.i("DOWNLOAD URL",downloadUri.toString());
+                    mediaUrl=downloadUri.toString();
+                    Log.i("downloadTAG",mediaUrl);
 
                     //To the next Activity!
                     Intent intent=new Intent(getContext(), UploadingPostActivity.class);

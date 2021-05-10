@@ -8,14 +8,15 @@
 
     <ImageButton
         android:id="@+id/postUploadChooseThumbnail"
-        android:layout_width="113dp"
+        android:layout_width="135dp"
 
-        android:layout_height="202dp"
+        android:layout_height="240dp"
         android:layout_marginEnd="28dp"
         app:layout_constraintBottom_toBottomOf="@+id/postUploadDesc"
         app:layout_constraintEnd_toStartOf="@+id/postUploadTitle"
         app:layout_constraintTop_toTopOf="@+id/postUploadTitle"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:scaleType="fitCenter"/>
 
     <EditText
         android:id="@+id/postUploadTitle"

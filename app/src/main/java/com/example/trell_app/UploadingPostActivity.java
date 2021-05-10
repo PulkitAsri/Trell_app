@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +40,7 @@ import java.util.UUID;
 public class UploadingPostActivity extends AppCompatActivity {
 
     String uploadedMediaUrl;
+
     Uri selectedImage=null;
     String thumbnailUrl;
 
@@ -66,7 +68,10 @@ public class UploadingPostActivity extends AppCompatActivity {
 
         //intent information
         Intent intent=getIntent();
-        uploadedMediaUrl=intent.getStringExtra("mediaUrl");
+        Bundle extras = intent.getExtras();
+        if(extras != null)
+            uploadedMediaUrl = extras.getString("mediaUrl");
+        Log.i("TAG",""+uploadedMediaUrl);
 
         //listeners and stuff
         finalUploaded.setOnClickListener(v -> finalUploadedClicked());
@@ -80,6 +85,8 @@ public class UploadingPostActivity extends AppCompatActivity {
 
         String title= titleEditText.getText().toString();
         String desc= descEditText.getText().toString();
+
+        final String[] userNameValue = new String[1];
 
 
         if(!title.equals("") && !desc.equals("")){
@@ -106,35 +113,45 @@ public class UploadingPostActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(UploadingPostActivity.this, "Uploaded!", Toast.LENGTH_SHORT).show();
+                    userNameValue[0] = task.getResult().getValue().toString();
+                    Log.i("UsernameTAG",userNameValue[0]);
+
                 }
+            });
+            Log.i("UsernameTAG",userNameValue[0]);
+
+            postInfo.put( "comments",(new HashMap<String,String>()).put(currentUid,"Start A Conversation!"));
+            postInfo.put( "likes",(new HashMap<String,String>()).put(currentUid,"liked"));
+            postInfo.put( "date",timeStamp);
+            postInfo.put( "desc",desc);
+            postInfo.put( "mediaUrl",(uploadedMediaUrl==null)? "default" :uploadedMediaUrl);
+            postInfo.put( "noOfComments", 0);
+            postInfo.put( "noOfLikes",0);
+            postInfo.put( "thumbnail", (thumbnailUrl==null)? "default" :thumbnailUrl);
+            postInfo.put( "title", title);
+            postInfo.put( "userId",currentUid);
+            postInfo.put( "userName", (userNameValue[0]==null)? "default" :userNameValue[0]);
+            postInfo.put( "views", 0);
+
+
+            //upload to posts in the db ref
+            postRef.updateChildren(postInfo);
+
+
+            //upload to users under posts
+            Task completed =userRef.child("posts").updateChildren(postInfo);
+
+
+            //start a new activity
+            completed.addOnCompleteListener(task -> {
+                Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
+                startActivity(intent);
             });
 
 
-            postInfo.put( "comments",new HashMap<Object,Object>());
-            postInfo.put( "likes",new HashMap<Object,Object>());
-            postInfo.put( "date",timeStamp);
-            postInfo.put( "desc",desc);
-            postInfo.put( "mediaUrl",(uploadedMediaUrl==null)?"default":uploadedMediaUrl);
-            postInfo.put( "noOfComments", 0);
-            postInfo.put( "noOfLikes",0);
-            postInfo.put( "thumbnail", (thumbnailUrl==null)?"default":thumbnailUrl);
-            postInfo.put( "title", title);
-            postInfo.put( "userId",currentUid);
-            postInfo.put( "userName", "@default");
-            postInfo.put( "views", 0);
-
-            //upload to posts in the db ref
-
-
-            postRef.updateChildren(postInfo);
-
-            //upload to users under posts
-
-            userRef.child("posts").updateChildren(postInfo);
+        }else{
+            Toast.makeText(this, "Please fill all fields correctly", Toast.LENGTH_SHORT).show();
         }
-
-        Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
-        startActivity(intent);
 
     }
 
@@ -146,17 +163,17 @@ public class UploadingPostActivity extends AppCompatActivity {
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
             selectedImage=data.getData();
             try {
-                Bitmap bitmap =MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),selectedImage);
-                chooseThumbnail.setImageBitmap(bitmap);
-                uploadToFirebaseStorage();
+
+                Glide.with(this).load(selectedImage).into(chooseThumbnail);
+                uploadToFirebaseStorage(selectedImage);
             } catch ( Exception e) {
                 e.printStackTrace();
             }
         }
 
     }
-    private void uploadToFirebaseStorage() {
-        if(selectedImage==null) return;
+    private void uploadToFirebaseStorage(Uri imageUri) {
+        if(imageUri==null) return;
 
         String filename = UUID.randomUUID().toString();
         StorageReference ref = FirebaseStorage.getInstance().getReference()
@@ -165,13 +182,13 @@ public class UploadingPostActivity extends AppCompatActivity {
 //            Picasso.get().load(selectedImage).into(circularImageView);
         try {
 
-            Bitmap bitmap =MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),selectedImage);
+            Bitmap bitmap =MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),imageUri);
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
             byte[] data = stream.toByteArray();
             ref.putBytes(data)
                     .addOnSuccessListener(taskSnapshot -> {
-                        Toast.makeText(getApplicationContext(), "", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
                         ref.getDownloadUrl().addOnSuccessListener(uri -> thumbnailUrl=uri.toString());
 
                     });
@@ -179,12 +196,6 @@ public class UploadingPostActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private String getUsernameFromUid(String userId){
-
-
-        return "@default";
     }
 
 }
