@@ -103,25 +103,20 @@ public class MediaPostAdapter extends RecyclerView.Adapter<MediaPostAdapter.Medi
             Glide.with(context).load(mediaObject.getThumbnail()).into(mFullThumbnail);
 
             videoView.setVideoURI(Uri.parse(mediaObject.getMediaUrl()));
-            videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    loading.setVisibility(View.GONE);
+            videoView.setOnPreparedListener(mp -> {
+                loading.setVisibility(View.GONE);
 
-                    float videoRatio=mp.getVideoWidth()/(float)mp.getVideoHeight();
-                    float screenRatio=videoView.getWidth()/(float)videoView.getHeight();
-                    float scale=videoRatio/screenRatio;
+                float videoRatio=mp.getVideoWidth()/(float)mp.getVideoHeight();
+                float screenRatio=videoView.getWidth()/(float)videoView.getHeight();
+                float scale=videoRatio/screenRatio;
 
-                    if(scale >=1f) videoView.setScaleX(scale);
-                    else videoView.setScaleY(1f/scale);
+                if(scale >=1f) videoView.setScaleX(scale);
+                else videoView.setScaleY(1f/scale);
 
-                    mp.start();
-                    mFullThumbnail.setVisibility(View.GONE);
-                    mp.setLooping(true);
-                }
+                mp.start();
+                mFullThumbnail.setVisibility(View.GONE);
+                mp.setLooping(true);
             });
-
-
 
         }
     }

@@ -52,7 +52,6 @@ public class CameraFragment  extends Fragment {
     ProgressBar loading;
 
     VideoView videoView;
-    MediaController mediaController;
     private Uri mediaUrl;
 
 
@@ -68,11 +67,6 @@ public class CameraFragment  extends Fragment {
 
         //video Things
         videoView=view.findViewById(R.id.previewCameraSelectedVideo);
-        mediaController=new MediaController(getContext());
-        videoView.setMediaController(mediaController);
-        mediaController.setAnchorView(videoView);
-        videoView.start();
-
 
         loading=view.findViewById(R.id.uploadVideoLoadingProgressBar);
 
@@ -91,8 +85,6 @@ public class CameraFragment  extends Fragment {
                 uploadVideo();
             }
         });
-
-
 
         return view;
     }
@@ -117,17 +109,13 @@ public class CameraFragment  extends Fragment {
                     .child("videos")
                     .child(systemMillis + "." + getFileExt(videoURI));
 
-//          UPLOADING TASK
 
-
+            //UPLOADING TASK
             UploadTask uploadTask=ref.putFile(videoURI);
 
-            uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                    Log.d("PROGRESS", "Upload is " + progress + "% done");
-                }
+            uploadTask.addOnProgressListener(taskSnapshot -> {
+                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                Log.d("PROGRESS", "Upload is " + progress + "% done");
             })
             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -144,36 +132,29 @@ public class CameraFragment  extends Fragment {
             });
 
 
-//          RETREIVING THE DOWNLOAD URL
+            //RETREIVING THE DOWNLOAD URL
 
-
-            Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if (!task.isSuccessful()) {
-                        throw task.getException();
-                    }
-                    // Continue with the task to get the download URL
-                    return ref.getDownloadUrl();
+            Task<Uri> urlTask = uploadTask.continueWithTask(task -> {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
                 }
-            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                @Override
-                public void onComplete(@NonNull Task<Uri> task) {
-                    if (task.isSuccessful()) {
-                        Uri downloadUri = task.getResult();
-                        mediaUrl=downloadUri;
-                        Log.i("DOWNLOAD URL",downloadUri.toString());
+                // Continue with the task to get the download URL
+                return ref.getDownloadUrl();
+            }).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Uri downloadUri = task.getResult();
+                    mediaUrl=downloadUri;
+                    Log.i("DOWNLOAD URL",downloadUri.toString());
 
-                        //To the next Activity!
-                        Intent intent=new Intent(getContext(), UploadingPostActivity.class);
-                        intent.putExtra("mediaUrl",mediaUrl);
-                        startActivity(intent);
+                    //To the next Activity!
+                    Intent intent=new Intent(getContext(), UploadingPostActivity.class);
+                    intent.putExtra("mediaUrl",mediaUrl);
+                    startActivity(intent);
 
 
-                    } else {
-                        // Handle failures
+                } else {
+                    // Handle failures
 
-                    }
                 }
             });
         }
@@ -187,6 +168,20 @@ public class CameraFragment  extends Fragment {
 
             //video set to video view in the next activity
             videoView.setVideoURI(videoURI);
+            videoView.setOnPreparedListener(mp -> {
+                loading.setVisibility(View.GONE);
+
+                //scaling it to a correct size
+                float videoRatio=mp.getVideoWidth()/(float)mp.getVideoHeight();
+                float screenRatio=videoView.getWidth()/(float)videoView.getHeight();
+                float scale=videoRatio/screenRatio;
+
+                if(scale >=1f) videoView.setScaleX(scale);
+                else videoView.setScaleY(1f/scale);
+
+                mp.start();
+                mp.setLooping(true);
+            });
 
         }
     }
