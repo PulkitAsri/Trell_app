@@ -24,6 +24,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
         android:hint="Title"
+        android:inputType="textCapWords"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -37,7 +38,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:hint="Description"
-        android:inputType="textMultiLine"
+        android:inputType="textMultiLine|textCapWords"
         app:layout_constraintEnd_toEndOf="@+id/postUploadTitle"
         app:layout_constraintStart_toStartOf="@+id/postUploadTitle"
         app:layout_constraintTop_toBottomOf="@+id/postUploadTitle" />
