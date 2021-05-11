@@ -99,7 +99,6 @@ public class UploadingPostActivity extends AppCompatActivity {
             SharedPreferences sharedpreferences = this.getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
 
 
-
             //Calculations
             long timeStamp=System.currentTimeMillis();
             String currentUid=mAuth.getCurrentUser().getUid();
@@ -127,18 +126,12 @@ public class UploadingPostActivity extends AppCompatActivity {
             postInfo.put( "views", 0);
 
 
-
-
-
-
-
-
             //upload to posts in the db ref
             postRef.updateChildren(postInfo);
 
 
             //upload to users under posts
-            userRef.child("posts").updateChildren(postInfo)
+            userRef.child("posts").child(postId).updateChildren(postInfo)
                     .addOnCompleteListener(task -> {
                 Intent intent=new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(intent);
@@ -148,7 +141,6 @@ public class UploadingPostActivity extends AppCompatActivity {
         }else{
             Toast.makeText(this, "Please fill all fields correctly", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override

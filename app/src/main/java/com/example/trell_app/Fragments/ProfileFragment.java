@@ -158,9 +158,13 @@ public class ProfileFragment extends Fragment {
             ref.getDownloadUrl().addOnSuccessListener(uri ->saveDataToDatabase(uri.toString()));
         });
     }
+
     public void logout(){
         FirebaseAuth.getInstance().signOut();
         Log.i("logout "," here");
+
+        SharedPreferences sharedpreferences = getContext().getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
+        sharedpreferences.edit().clear();
         Intent intent =new Intent(getContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TASK |

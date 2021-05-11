@@ -34,6 +34,8 @@
 
     <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
     <!--    </androidx.camera.view.PreviewView>-->
+
+
     <VideoView
         android:id="@+id/previewCameraSelectedVideo"
         android:layout_width="match_parent"
@@ -62,15 +64,27 @@
         android:text=">"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
     <ProgressBar
         android:id="@+id/uploadVideoLoadingProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UPLOAD VIDEO"
+        android:textAlignment="center"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/previewCameraSelectedVideo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
