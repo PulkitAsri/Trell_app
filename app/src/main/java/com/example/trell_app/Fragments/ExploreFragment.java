@@ -36,8 +36,7 @@ public class ExploreFragment extends Fragment  {
 
 
     public static ExploreFragment newInstance(){
-        ExploreFragment exploreFragment=new ExploreFragment();
-        return exploreFragment;
+        return new ExploreFragment();
     }
 
     @Override

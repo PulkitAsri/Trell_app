@@ -1,7 +1,9 @@
 package com.example.trell_app.Fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -43,10 +46,8 @@ import java.util.UUID;
 public class ProfileFragment extends Fragment {
 
     public static ProfileFragment newInstance(){
-        ProfileFragment profileFragment=new ProfileFragment();
-        return profileFragment;
+        return new ProfileFragment();
     }
-
 
     ImageButton chooseProfilePicButton;
     CircularImageView circularImageView;
@@ -85,6 +86,11 @@ public class ProfileFragment extends Fragment {
                 String name=snapshot.child("firstname").getValue(String.class)+" "+snapshot.child("lastname").getValue(String.class);
                 String username=snapshot.child("username").getValue(String.class);
 
+                SharedPreferences sharedpreferences = getContext().getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString("userName", username);
+
+                editor.apply();
                 mName.setText(name);
                 mUsername.setText(username);
             }
@@ -95,20 +101,12 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        chooseProfilePicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent,1);
-            }
+        chooseProfilePicButton.setOnClickListener(v -> {
+            Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(intent,1);
         });
 
-        mLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
+        mLogout.setOnClickListener(v -> logout());
         return view;
     }
 
@@ -138,12 +136,7 @@ public class ProfileFragment extends Fragment {
                .child(mAuth.getCurrentUser().getUid())
                 .child("profileImageUrl")
                 .setValue(profileImageUrl)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.i("SUCCESS","profilePicUploaded");
-                    }
-                });
+                .addOnSuccessListener(aVoid -> Log.i("SUCCESS","profilePicUploaded"));
         }
 
     private void uploadToFirebaseStorage() {
@@ -153,31 +146,17 @@ public class ProfileFragment extends Fragment {
         StorageReference ref = FirebaseStorage.getInstance().getReference()
                 .child("profilePictures").child(filename);
 
-//            Picasso.get().load(selectedImage).into(circularImageView);
-        try {
+        Glide.with(this).load(selectedImage).into(circularImageView);
 
-            Bitmap bitmap =MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImage);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream);
-            byte[] data = stream.toByteArray();
-            StorageTask<UploadTask.TaskSnapshot> uploadTask = ref.putBytes(data)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
-                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                @Override
-                                public void onSuccess(Uri uri) {
-                                    saveDataToDatabase(uri.toString()) ;
-                                }
-                            });
+        //Uploading
+        UploadTask uploadTask = ref.putFile(selectedImage);
+        uploadTask.addOnFailureListener(exception -> {
+            // Handle unsuccessful uploads
+        }).addOnSuccessListener(taskSnapshot -> {
 
-                        }
-                    });
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Toast.makeText(getContext(), "Uploaded", Toast.LENGTH_SHORT).show();
+            ref.getDownloadUrl().addOnSuccessListener(uri ->saveDataToDatabase(uri.toString()));
+        });
     }
     public void logout(){
         FirebaseAuth.getInstance().signOut();

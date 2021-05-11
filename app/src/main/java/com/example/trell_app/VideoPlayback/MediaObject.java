@@ -1,15 +1,11 @@
 package com.example.trell_app.VideoPlayback;
 
-import androidx.transition.Transition;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class MediaObject {
 
-    public MediaObject(){
-
-    }
+    public MediaObject(){ }
 
 
     private String thumbnail;
@@ -44,7 +40,7 @@ public class MediaObject {
 
 
 
-    public MediaObject(String postId,String userId,String thumbnail, String mediaUrl, String title, String desc, String date,  Long views,  String userName, HashMap likes, Long noOfLikes, HashMap comments, Long noOfComments) {
+    public MediaObject(String postId, String userId, String thumbnail, String mediaUrl, String title, String desc, String date, Long views, String userName, HashMap<String, Object> likes, Long noOfLikes, HashMap<String, Object> comments, Long noOfComments) {
         this.thumbnail = thumbnail;
         this.mediaUrl = mediaUrl;
         this.title = title;
@@ -148,7 +144,7 @@ public class MediaObject {
         return likes;
     }
 
-    public void setLikes(Map likes) {
+    public void setLikes(Map<String, Object> likes) {
         this.likes = likes;
     }
 
@@ -164,7 +160,7 @@ public class MediaObject {
         return comments;
     }
 
-    public void setComments(Map comments) {
+    public void setComments(Map<String, Object> comments) {
         this.comments = comments;
     }
 

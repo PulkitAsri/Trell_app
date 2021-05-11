@@ -40,8 +40,7 @@ import java.net.URI;
 
 public class CameraFragment  extends Fragment {
 
-    ViewPort viewPort;
-    private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
+
 
     private static final int PICK_VIDEO_REQUEST=1;
     private Uri videoURI;
@@ -56,8 +55,7 @@ public class CameraFragment  extends Fragment {
 
 
     public static CameraFragment newInstance(){
-        CameraFragment cameraFragment=new CameraFragment();
-        return cameraFragment;
+        return new CameraFragment();
     }
 
     @Override
