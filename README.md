@@ -15,9 +15,11 @@ This project was made for Trell Hackathon Round 3
 
 
 <p><img width="50" src="https://www.flaticon.com/svg/vstatic/svg/226/226777.svg?token=exp=1620823248~hmac=e83fe90ae4255cee9fae750d53f61657">
-  <a href="">Click Here For Viewing Java Files</a>
+  <a href="https://github.com/PulkitAsri/Trell_app/tree/master/app/src/main/java/com/example/trell_app">Click Here For Viewing Java Files</a>
 </p>
-<p><img width="50" src="https://www.flaticon.com/svg/vstatic/svg/136/136526.svg?token=exp=1620823474~hmac=eb7eff1a4622dc6e46ea83c3cad40a01"><a href="">Click Here For Layout Files</a></p>
+<p><img width="50" src="https://www.flaticon.com/svg/vstatic/svg/136/136526.svg?token=exp=1620823474~hmac=eb7eff1a4622dc6e46ea83c3cad40a01">
+  <a href="https://github.com/PulkitAsri/Trell_app/tree/master/app/src/main/res/layout">Click Here For Layout Files</a>
+</p>
   
 
 <h2>Signup/Sigin pages</h2>
