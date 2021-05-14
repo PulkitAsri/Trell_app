@@ -112,13 +112,20 @@ public class UploadingPostActivity extends AppCompatActivity {
             DatabaseReference postRef=ref.child("posts").child(postId);
 
 
-            postInfo.put( "comments",(new HashMap<String,String>()).put(currentUid,"Start A Conversation!"));
-            postInfo.put( "likes",(new HashMap<String,String>()).put(currentUid,"liked"));
+            HashMap<String,Object> commentsMap= new HashMap<String, Object>();
+            commentsMap.put(currentUid,"Start A Conversation!");
+
+            HashMap<String,Object> likesMap= new HashMap<String,Object>();
+            likesMap.put(currentUid,"liked");
+
+            postInfo.put( "comments",commentsMap);
+            postInfo.put( "likes",likesMap);
+
             postInfo.put( "date",timeStamp);
             postInfo.put( "desc",desc);
             postInfo.put( "mediaUrl",(uploadedMediaUrl==null)? "default" :uploadedMediaUrl);
-            postInfo.put( "noOfComments", 0);
-            postInfo.put( "noOfLikes",0);
+            postInfo.put( "noOfComments", 1);
+            postInfo.put( "noOfLikes",1);
             postInfo.put( "thumbnail", (thumbnailUrl==null)? "default" :thumbnailUrl);
             postInfo.put( "title", title);
             postInfo.put( "userId",currentUid);
@@ -128,9 +135,12 @@ public class UploadingPostActivity extends AppCompatActivity {
 
             //upload to posts in the db ref
             postRef.updateChildren(postInfo);
-
+            postRef.child("comments").updateChildren(commentsMap);
+            postRef.child("likes").updateChildren(likesMap);
 
             //upload to users under posts
+            userRef.child("posts").child(postId).updateChildren(commentsMap);
+            userRef.child("posts").child(postId).updateChildren(likesMap);
             userRef.child("posts").child(postId).updateChildren(postInfo)
                     .addOnCompleteListener(task -> {
                 Intent intent=new Intent(getApplicationContext(),HomeActivity.class);

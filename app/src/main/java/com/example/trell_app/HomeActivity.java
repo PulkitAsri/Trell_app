@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Toast;
@@ -39,6 +40,8 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        saveUserDataToSharedPreferences();
 
         homePager=findViewById(R.id.homePager);
         fragmentPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
@@ -91,7 +94,6 @@ public class HomeActivity extends AppCompatActivity {
                 String username=snapshot.child("username").getValue(String.class);
 
 
-
                 SharedPreferences sharedpreferences = getApplication().getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putString("userId", userId);
@@ -99,8 +101,9 @@ public class HomeActivity extends AppCompatActivity {
                 editor.putString("userName", username);
                 editor.putString("firstName", firstName);
                 editor.putString("lastName", lastName);
-
                 editor.apply();
+
+                Log.i("TAG",userId+' '+firstName+" "+lastName+" "+username+" "+profileImageUrl);
             }
 
             @Override

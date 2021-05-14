@@ -93,7 +93,6 @@ public class ExploreFragment extends Fragment  {
         });
 
         return postsList;
-
     }
 
 //    private ArrayList<MediaObject> listenForData(){

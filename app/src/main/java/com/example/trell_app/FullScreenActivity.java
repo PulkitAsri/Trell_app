@@ -45,13 +45,12 @@ public class FullScreenActivity extends AppCompatActivity {
 
         mAuth= FirebaseAuth.getInstance();
         Intent intent=getIntent();
-//        String selectedPostId=intent.getStringExtra("postId");
+
          int positionTouched = intent.getExtras().getInt("position");
 
         Log.i("INTENT"," "+positionTouched);
 
         mediaObjectList=ExploreFragment.postsList;
-//        listenForData();
 
         viewPager2=findViewById(R.id.fullScreenVideoViewPager);
         linearLayoutManager=new LinearLayoutManager(this);
@@ -61,7 +60,6 @@ public class FullScreenActivity extends AppCompatActivity {
 
         viewPager2.post(() -> viewPager2.setCurrentItem(positionTouched,false));
 
-//        viewPager2.setCurrentItem(positionTouched,false);
         adapter.notifyDataSetChanged();
 
 

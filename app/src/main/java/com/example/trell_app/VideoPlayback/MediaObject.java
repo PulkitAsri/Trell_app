@@ -5,7 +5,9 @@ import java.util.Map;
 
 public class MediaObject {
 
-    public MediaObject(){ }
+    public MediaObject(){}
+
+
 
 
     private String thumbnail;
@@ -20,6 +22,9 @@ public class MediaObject {
     private Long noOfLikes;
     private Long noOfComments;
     Map<String,Object> likes,comments;
+
+    private boolean isLiked;
+
 
 
     public MediaObject(String postId, String userId, String thumbnail, String mediaUrl, String title, String desc, String date, long views, String userName, Object likes, long noOfLikes, Object comments, long noOfComments){
@@ -36,6 +41,7 @@ public class MediaObject {
         this.noOfLikes = noOfLikes;
         this.comments = (Map<String, Object>)comments;
         this.noOfComments = noOfComments;//just for now
+        isLiked=false;
     }
 
 
@@ -170,5 +176,14 @@ public class MediaObject {
 
     public void setNoOfComments(long noOfComments) {
         this.noOfComments = noOfComments;
+    }
+
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 }

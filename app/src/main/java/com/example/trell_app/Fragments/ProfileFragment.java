@@ -61,6 +61,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_profile,container,false);
 
+        SharedPreferences sharedpreferences = getContext().getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
+        mAuth=FirebaseAuth.getInstance();
+
         chooseProfilePicButton=view.findViewById(R.id.profilePictureButton);
         circularImageView=view.findViewById(R.id.profilePicture);
         mName=view.findViewById(R.id.profileName);
@@ -69,37 +72,15 @@ public class ProfileFragment extends Fragment {
         mPostCount=view.findViewById(R.id.profilePostCount);
         mFollowers=view.findViewById(R.id.profileFollowers);
         mFollowing=view.findViewById(R.id.profileFollowing);
+        String userName =sharedpreferences.getString("userName","default");
+        String firstName =sharedpreferences.getString("firstName","default");
+        String lastName =sharedpreferences.getString("lastName","default");
+        String imageUrl =sharedpreferences.getString("profileImageUrl","default");
 
+        mName.setText(firstName+" "+lastName);
+        mUsername.setText(userName);
+        Glide.with(getContext()).load(imageUrl).dontAnimate().into(circularImageView);
 
-        mAuth=FirebaseAuth.getInstance();
-        profileRef=FirebaseDatabase.getInstance().getReference()
-                .child("users")
-                .child(mAuth.getCurrentUser().getUid());
-
-        profileRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String link =snapshot.child("profileImageUrl").getValue(String.class);
-                if(!link.equals("default"))
-                    Glide.with(getContext()).load(link).dontAnimate().into(circularImageView);
-
-                String name=snapshot.child("firstname").getValue(String.class)+" "+snapshot.child("lastname").getValue(String.class);
-                String username=snapshot.child("username").getValue(String.class);
-
-                SharedPreferences sharedpreferences = getContext().getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString("userName", username);
-
-                editor.apply();
-                mName.setText(name);
-                mUsername.setText(username);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(getContext(), ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
         chooseProfilePicButton.setOnClickListener(v -> {
             Intent intent=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -115,24 +96,15 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
         if (requestCode == 1 && resultCode == Activity.RESULT_OK && data != null) {
             selectedImage=data.getData();
-
-            try {
-                Bitmap bitmap =MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),selectedImage);
-                circularImageView.setImageBitmap(bitmap);
-                uploadToFirebaseStorage();
-
-            } catch ( Exception e) {
-                e.printStackTrace();
-            }
+            Glide.with(getContext()).load(selectedImage).dontAnimate().into(circularImageView);
+            uploadToFirebaseStorage();
         }
-
     }
     private void saveDataToDatabase(String profileImageUrl ) {
 
-        Task<Void> ref= FirebaseDatabase.getInstance().getReference().child("users")
+        FirebaseDatabase.getInstance().getReference().child("users")
                .child(mAuth.getCurrentUser().getUid())
                 .child("profileImageUrl")
                 .setValue(profileImageUrl)
