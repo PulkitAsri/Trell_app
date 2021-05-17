@@ -19,7 +19,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.ui.AppBarConfiguration;
 
 import com.bumptech.glide.Glide;
 import com.example.trell_app.MainActivity;
@@ -57,12 +60,17 @@ public class ProfileFragment extends Fragment {
     Button mLogout;
 
 
+    DrawerLayout mDrawerLayout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_profile,container,false);
 
         SharedPreferences sharedpreferences = getContext().getSharedPreferences("com.example.trell_app", Context.MODE_PRIVATE);
         mAuth=FirebaseAuth.getInstance();
+
+        mDrawerLayout=view.findViewById(R.id.drawer_layout);
+
 
         chooseProfilePicButton=view.findViewById(R.id.profilePictureButton);
         circularImageView=view.findViewById(R.id.profilePicture);
