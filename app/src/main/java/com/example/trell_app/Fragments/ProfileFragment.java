@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -70,6 +72,10 @@ public class ProfileFragment extends Fragment {
         mAuth=FirebaseAuth.getInstance();
 
         mDrawerLayout=view.findViewById(R.id.drawer_layout);
+
+        view.findViewById(R.id.profileSideBar).setOnClickListener(v -> {
+            mDrawerLayout.openDrawer(GravityCompat.END);
+        });
 
 
         chooseProfilePicButton=view.findViewById(R.id.profilePictureButton);
